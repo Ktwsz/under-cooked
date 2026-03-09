@@ -1,0 +1,4 @@
+[submodule "addons/unidot_importer"]
+	path = addons/unidot_importer
+	url = https://github.com/V-Sekai/unidot_importer.git
+	branch = main
