@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://squ75dg88pcp" path="res://KitchenChaos/Assets/Meshes/Tomato.fbx" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://jfr2aenvd7hf" path="res://KitchenChaos/Assets/Meshes/FryingPan.fbx" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://doal7ynwwo4yj" path="res://KitchenChaos/Assets/Meshes/MeatUncooked.fbx" id="6_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table.tscn" id="7_n6hdu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
@@ -69,3 +70,33 @@ transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, -3
 
 [node name="MeatUncooked" parent="." unique_id=437502502 instance=ExtResource("6_n6hdu")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 3, 1, 3)
+
+[node name="Node3D" parent="." unique_id=2072600989 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+
+[node name="Tomato2" parent="Node3D" unique_id=909914293 instance=ExtResource("4_0b4ue")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.5, 0)
+
+[node name="Node3D2" parent="." unique_id=716298673 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
+
+[node name="Node3D3" parent="." unique_id=90021322 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
+
+[node name="Node3D4" parent="." unique_id=300794277 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -2)
+
+[node name="Node3D5" parent="." unique_id=55288419 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -2)
+
+[node name="Node3D6" parent="." unique_id=305472510 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -2)
+
+[node name="Node3D7" parent="." unique_id=1130574790 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -1)
+
+[node name="Node3D8" parent="." unique_id=1779083816 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
+
+[node name="Node3D9" parent="." unique_id=210906660 instance=ExtResource("7_n6hdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)

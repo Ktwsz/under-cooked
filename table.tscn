@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://deia2bq6l0qyk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1emcc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.3372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jd0nb"]
+material = SubResource("StandardMaterial3D_1emcc")
+size = Vector3(1.1, 1.1, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jd0nb"]
+
+[node name="Node3D" type="StaticBody3D" unique_id=2072600989]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=802939045]
+mesh = SubResource("BoxMesh_1emcc")
+
+[node name="Highlight" type="MeshInstance3D" parent="." unique_id=1361756805]
+visible = false
+mesh = SubResource("BoxMesh_jd0nb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2042786382]
+shape = SubResource("BoxShape3D_jd0nb")

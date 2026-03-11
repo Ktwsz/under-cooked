@@ -6,6 +6,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_4flbx"]
+radius = 0.3
+height = 0.2
+
 [node name="Player" type="CharacterBody3D" unique_id=281990778]
 script = ExtResource("1_4flbx")
 
@@ -14,3 +18,9 @@ mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=577144523]
 shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=435736335]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot" unique_id=2133266898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628, -0.435)
+mesh = SubResource("SphereMesh_4flbx")
