@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://clmuyc0jjvrh0"]
+
+[ext_resource type="Script" uid="uid://b6ylr5rbu3vjr" path="res://CuttingTable.cs" id="1_6ojdj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yk1d"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2yk1d"]
+material = SubResource("StandardMaterial3D_2yk1d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.3372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ojdj"]
+material = SubResource("StandardMaterial3D_1emcc")
+size = Vector3(1.1, 1.1, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8cwr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6ojdj"]
+viewport_path = NodePath("CuttingProgressBar/ProgressBarViewport")
+
+[node name="CuttingTable" type="StaticBody3D" unique_id=560797329]
+script = ExtResource("1_6ojdj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=548722614]
+mesh = SubResource("BoxMesh_2yk1d")
+
+[node name="Highlight" type="MeshInstance3D" parent="." unique_id=770216924]
+visible = false
+mesh = SubResource("BoxMesh_6ojdj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=617802799]
+shape = SubResource("BoxShape3D_g8cwr")
+
+[node name="Item" type="Node3D" parent="." unique_id=398907091]
+
+[node name="Timer" type="Timer" parent="." unique_id=5782585]
+wait_time = 2.0
+
+[node name="CuttingProgressBar" type="Sprite3D" parent="." unique_id=356154641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+visible = false
+texture = SubResource("ViewportTexture_6ojdj")
+
+[node name="ProgressBarViewport" type="SubViewport" parent="CuttingProgressBar" unique_id=1596064108]
+size = Vector2i(192, 27)
+
+[node name="ProgressBar" type="ProgressBar" parent="CuttingProgressBar/ProgressBarViewport" unique_id=1766610383]
+offset_right = 192.0
+offset_bottom = 27.0
+value = 50.0

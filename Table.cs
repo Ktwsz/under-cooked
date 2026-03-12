@@ -4,11 +4,11 @@ using Godot;
 public partial class Table : StaticBody3D
 {
     [Export]
-    public string InitPlacedItem { get; set; } = null;
+    public string InitPlacedItem { get; set; } = null; // TODO: spawner of food
 
-    private Node3D placedItem = null;
+    protected Node3D placedItem = null;
 
-    private void AddItemToScene()
+    protected void AddItemToScene()
     {
         if (placedItem.GetParent() == null)
             GetNode<Node>("Item").AddChild(placedItem);
@@ -23,11 +23,12 @@ public partial class Table : StaticBody3D
         {
             placedItem = ResourceLoader.Load<PackedScene>(InitPlacedItem).Instantiate() as Node3D;
             placedItem.SetScale(new Vector3(4, 4, 4));
+            placedItem.SetName("Tomato"); // TODO: spawner of food
             AddItemToScene();
         }
     }
 
-    public bool tryPlaceItem(Node3D item)
+    public bool TryPlaceItem(Node3D item)
     {
         if (placedItem != null)
             return false;
@@ -37,10 +38,18 @@ public partial class Table : StaticBody3D
         return true;
     }
 
-    public Node3D pickupItem()
+    public virtual Node3D PickupItem()
     {
         var tmpItem = placedItem;
         placedItem = null;
         return tmpItem;
     }
+
+    public virtual bool CanInteract() => false;
+
+    public virtual void StartInteract() { }
+
+    public virtual void StopInteract() { }
+
+    public virtual Timer GetTimer() => null;
 }

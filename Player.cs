@@ -10,9 +10,13 @@ public partial class Player : CharacterBody3D
     private Vector3 _targetVelocity = Vector3.Zero;
     private Table _lastHighlightedTable = null;
     private Node3D _heldItem = null;
+    private bool _isInteracting = false;
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_isInteracting)
+            return;
+
         var direction = Vector3.Zero;
 
         if (Input.IsActionPressed("move_right"))
@@ -55,7 +59,7 @@ public partial class Player : CharacterBody3D
             (_lastHighlightedTable.FindChild("Highlight") as Node3D).SetVisible(false);
         }
         var parent = GetParent<Node3D>();
-        var children = parent.FindChildren("Node3D*");
+        var children = parent.FindChildren("*Table*");
         // TODO: give priority to the tables in front of the player (filter tables by angle between it and players pivot?)
         var closestTable = children
             .Where(table => GetDistToTable(table as Node3D) <= 3.0)
@@ -73,28 +77,67 @@ public partial class Player : CharacterBody3D
         _lastHighlightedTable = closestTable as Table;
     }
 
+    private void PickupAction()
+    {
+        if (_lastHighlightedTable == null)
+            return;
+
+        if (_heldItem == null)
+        {
+            _heldItem = _lastHighlightedTable.PickupItem();
+            if (_heldItem != null)
+            {
+                _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
+                _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
+            }
+        }
+        else
+        {
+            if (_lastHighlightedTable.TryPlaceItem(_heldItem))
+            {
+                _heldItem = null;
+            }
+        }
+    }
+
+    private void InterractionEnded()
+    {
+        _isInteracting = false;
+        _lastHighlightedTable.GetTimer().Timeout -= InterractionEnded;
+    }
+
     public override void _Process(double delta)
     {
-        HighlightCurrentTable();
-
-        if (Input.IsActionJustPressed("pickup") && _lastHighlightedTable != null)
+        if (!_isInteracting)
         {
-            if (_heldItem == null)
+            HighlightCurrentTable();
+
+            if (Input.IsActionJustPressed("pickup"))
             {
-                _heldItem = _lastHighlightedTable.pickupItem();
-                if (_heldItem != null)
-                {
-                    _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
-                    _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
-                }
+                PickupAction();
             }
-            else
+
+            if (
+                Input.IsActionJustPressed("interact")
+                && _lastHighlightedTable != null
+                && _lastHighlightedTable.CanInteract()
+            )
             {
-                if (_lastHighlightedTable.tryPlaceItem(_heldItem))
-                {
-                    _heldItem = null;
-                }
+                _lastHighlightedTable.GetTimer().Timeout += InterractionEnded;
+                _lastHighlightedTable.StartInteract();
+                _isInteracting = true;
             }
+        }
+
+        if (
+            Input.IsActionJustReleased("interact")
+            && _lastHighlightedTable != null
+            && _lastHighlightedTable.CanInteract()
+        )
+        {
+            _lastHighlightedTable.GetTimer().Timeout -= InterractionEnded;
+            _lastHighlightedTable.StopInteract();
+            _isInteracting = false;
         }
     }
 }

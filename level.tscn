@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8o4kx4d8s3cr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8il8880trii" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://clmuyc0jjvrh0" path="res://cutting_table.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table.tscn" id="7_n6hdu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
@@ -36,31 +37,34 @@ transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.70710677, 0, -0.70710677, 0.707
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1959642988]
 
-[node name="Node3D" parent="." unique_id=2072600989 instance=ExtResource("7_n6hdu")]
+[node name="Table1" parent="." unique_id=2072600989 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
 InitPlacedItem = "res://KitchenChaos/Assets/Meshes/Tomato.fbx"
 
-[node name="Node3D2" parent="." unique_id=716298673 instance=ExtResource("7_n6hdu")]
+[node name="Table2" parent="." unique_id=716298673 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
 
-[node name="Node3D3" parent="." unique_id=90021322 instance=ExtResource("7_n6hdu")]
+[node name="Table3" parent="." unique_id=90021322 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
 
-[node name="Node3D4" parent="." unique_id=300794277 instance=ExtResource("7_n6hdu")]
+[node name="Table4" parent="." unique_id=300794277 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -2)
 
-[node name="Node3D5" parent="." unique_id=55288419 instance=ExtResource("7_n6hdu")]
+[node name="Table5" parent="." unique_id=55288419 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -2)
 
-[node name="Node3D6" parent="." unique_id=305472510 instance=ExtResource("7_n6hdu")]
+[node name="Table6" parent="." unique_id=305472510 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -2)
 
-[node name="Node3D7" parent="." unique_id=1130574790 instance=ExtResource("7_n6hdu")]
+[node name="Table7" parent="." unique_id=1130574790 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -1)
 
-[node name="Node3D8" parent="." unique_id=1779083816 instance=ExtResource("7_n6hdu")]
+[node name="Table8" parent="." unique_id=1779083816 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
 
-[node name="Node3D9" parent="." unique_id=210906660 instance=ExtResource("7_n6hdu")]
+[node name="Table9" parent="." unique_id=210906660 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
 InitPlacedItem = "res://KitchenChaos/Assets/Meshes/Tomato.fbx"
+
+[node name="CuttingTable" parent="." unique_id=560797329 instance=ExtResource("3_oi3di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 2)
