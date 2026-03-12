@@ -8,7 +8,8 @@ public partial class Player : CharacterBody3D
     public int Speed { get; set; } = 14;
 
     private Vector3 _targetVelocity = Vector3.Zero;
-    private Node3D _lastHighlightedNode = null;
+    private Table _lastHighlightedTable = null;
+    private Node3D _heldItem = null;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -47,11 +48,11 @@ public partial class Player : CharacterBody3D
     private float GetDistToTable(Node3D table) =>
         table.GetGlobalPosition().DistanceSquaredTo(GetGlobalPosition());
 
-    public override void _Process(double delta)
+    private void HighlightCurrentTable()
     {
-        if (_lastHighlightedNode != null)
+        if (_lastHighlightedTable != null)
         {
-            (_lastHighlightedNode.FindChild("Highlight") as Node3D).SetVisible(false);
+            (_lastHighlightedTable.FindChild("Highlight") as Node3D).SetVisible(false);
         }
         var parent = GetParent<Node3D>();
         var children = parent.FindChildren("Node3D*");
@@ -69,6 +70,31 @@ public partial class Player : CharacterBody3D
         {
             (closestTable.FindChild("Highlight") as Node3D).SetVisible(true);
         }
-        _lastHighlightedNode = closestTable as Node3D;
+        _lastHighlightedTable = closestTable as Table;
+    }
+
+    public override void _Process(double delta)
+    {
+        HighlightCurrentTable();
+
+        if (Input.IsActionJustPressed("pickup") && _lastHighlightedTable != null)
+        {
+            if (_heldItem == null)
+            {
+                _heldItem = _lastHighlightedTable.pickupItem();
+                if (_heldItem != null)
+                {
+                    _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
+                    _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
+                }
+            }
+            else
+            {
+                if (_lastHighlightedTable.tryPlaceItem(_heldItem))
+                {
+                    _heldItem = null;
+                }
+            }
+        }
     }
 }

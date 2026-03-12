@@ -73,9 +73,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 3, 1, 3)
 
 [node name="Node3D" parent="." unique_id=2072600989 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
-
-[node name="Tomato2" parent="Node3D" unique_id=909914293 instance=ExtResource("4_0b4ue")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.5, 0)
+InitPlacedItem = "res://KitchenChaos/Assets/Meshes/Tomato.fbx"
 
 [node name="Node3D2" parent="." unique_id=716298673 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
@@ -100,3 +98,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
 
 [node name="Node3D9" parent="." unique_id=210906660 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
+InitPlacedItem = "res://KitchenChaos/Assets/Meshes/Tomato.fbx"
