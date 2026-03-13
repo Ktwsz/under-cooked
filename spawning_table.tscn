@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://do6nuh6xu4mp8"]
+
+[ext_resource type="Script" uid="uid://34kdh1ttlehe" path="res://SpawningTable.cs" id="1_ywsak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yk1d"]
+albedo_color = Color(0.9309195, 0.23099634, 0.46510184, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d735y"]
+material = SubResource("StandardMaterial3D_2yk1d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.3372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ohpd"]
+material = SubResource("StandardMaterial3D_1emcc")
+size = Vector3(1.1, 1.1, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnxcv"]
+
+[node name="SpawningTable" type="StaticBody3D" unique_id=497865140]
+script = ExtResource("1_ywsak")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1792564363]
+mesh = SubResource("BoxMesh_d735y")
+
+[node name="Highlight" type="MeshInstance3D" parent="." unique_id=410719409]
+visible = false
+mesh = SubResource("BoxMesh_3ohpd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1757209717]
+shape = SubResource("BoxShape3D_gnxcv")
+
+[node name="Item" type="Node3D" parent="." unique_id=1760121191]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2rhlux1pdv3p"]
+
+[ext_resource type="Script" uid="uid://bp5cthw3m6e2c" path="res://CabbageSliced.cs" id="1_0fgsa"]
+[ext_resource type="PackedScene" uid="uid://dg513yeyyh5m1" path="res://KitchenChaos/Assets/Meshes/CabbageSlice_Shaped.fbx" id="1_yhuyp"]
+
+[node name="CabbageSliced" type="Node3D" unique_id=2094304491]
+script = ExtResource("1_0fgsa")
+
+[node name="CabbageSlice_Shaped" parent="." unique_id=1252194378 instance=ExtResource("1_yhuyp")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.1, 0)

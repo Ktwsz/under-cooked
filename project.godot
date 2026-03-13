@@ -15,6 +15,10 @@ run/main_scene="uid://c8o4kx4d8s3cr"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+FoodConstants="*uid://kykotvgfxxjd"
+
 [dotnet]
 
 project/assembly_name="UnderCooked"

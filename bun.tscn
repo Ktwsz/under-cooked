@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bp1xam4fqrmn1"]
+
+[ext_resource type="PackedScene" uid="uid://c7xfwt460y6ia" path="res://KitchenChaos/Assets/Meshes/BreadBottom.fbx" id="1_3pnhr"]
+[ext_resource type="PackedScene" uid="uid://10opyx57ce2i" path="res://KitchenChaos/Assets/Meshes/BreadTop.fbx" id="2_y01k6"]
+
+[node name="Bun" type="Node3D" unique_id=588018866]
+
+[node name="BreadBottom" parent="." unique_id=817007339 instance=ExtResource("1_3pnhr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.1, 0)
+
+[node name="BreadTop" parent="." unique_id=780623861 instance=ExtResource("2_y01k6")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.116, 0.319, 0)

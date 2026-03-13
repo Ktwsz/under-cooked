@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://c8o4kx4d8s3cr"]
 
 [ext_resource type="PackedScene" uid="uid://cj8il8880trii" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://j3t43a68i4pv" path="res://tomato.tscn" id="3_km5ld"]
 [ext_resource type="PackedScene" uid="uid://clmuyc0jjvrh0" path="res://cutting_table.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://do6nuh6xu4mp8" path="res://spawning_table.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bp1xam4fqrmn1" path="res://bun.tscn" id="6_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table.tscn" id="7_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://wkx8jbe18pc" path="res://cabbage.tscn" id="8_km5ld"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
@@ -39,7 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.70710677, 0, -0.70710677, 0.707
 
 [node name="Table1" parent="." unique_id=2072600989 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
-InitPlacedItem = "res://KitchenChaos/Assets/Meshes/Tomato.fbx"
+InitPlacedItem = ExtResource("3_km5ld")
 
 [node name="Table2" parent="." unique_id=716298673 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
@@ -64,7 +68,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
 
 [node name="Table9" parent="." unique_id=210906660 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
-InitPlacedItem = "res://KitchenChaos/Assets/Meshes/Tomato.fbx"
+InitPlacedItem = ExtResource("3_km5ld")
 
 [node name="CuttingTable" parent="." unique_id=560797329 instance=ExtResource("3_oi3di")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 2)
+
+[node name="SpawningTableTomato" parent="." unique_id=497865140 instance=ExtResource("4_0b4ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -2)
+spawnedFood = ExtResource("3_km5ld")
+
+[node name="SpawningTableBun" parent="." unique_id=1051198055 instance=ExtResource("4_0b4ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)
+spawnedFood = ExtResource("6_n6hdu")
+
+[node name="SpawningTableCabbage" parent="." unique_id=1126089362 instance=ExtResource("4_0b4ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -2)
+spawnedFood = ExtResource("8_km5ld")

@@ -77,6 +77,22 @@ public partial class Player : CharacterBody3D
         _lastHighlightedTable = closestTable as Table;
     }
 
+    private void ReparentHeldItem()
+    {
+        if (_heldItem != null)
+        {
+            if (_heldItem.GetParent() == null)
+            {
+                GetNode<Node3D>("Pivot").AddChild(_heldItem);
+            }
+            else
+            {
+                _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
+            }
+            _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
+        }
+    }
+
     private void PickupAction()
     {
         if (_lastHighlightedTable == null)
@@ -85,11 +101,7 @@ public partial class Player : CharacterBody3D
         if (_heldItem == null)
         {
             _heldItem = _lastHighlightedTable.PickupItem();
-            if (_heldItem != null)
-            {
-                _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
-                _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
-            }
+            ReparentHeldItem();
         }
         else
         {
@@ -98,6 +110,12 @@ public partial class Player : CharacterBody3D
                 _heldItem = null;
             }
         }
+    }
+
+    public void SetHeldItem(Node3D item)
+    {
+        _heldItem = item;
+        ReparentHeldItem();
     }
 
     private void InterractionEnded()
@@ -119,23 +137,31 @@ public partial class Player : CharacterBody3D
 
             if (
                 Input.IsActionJustPressed("interact")
+                && _heldItem == null
                 && _lastHighlightedTable != null
                 && _lastHighlightedTable.CanInteract()
             )
             {
-                _lastHighlightedTable.GetTimer().Timeout += InterractionEnded;
+                var timer = _lastHighlightedTable.GetTimer();
+                if (timer != null)
+                {
+                    timer.Timeout += InterractionEnded;
+                }
                 _lastHighlightedTable.StartInteract();
                 _isInteracting = true;
             }
         }
-
-        if (
+        else if (
             Input.IsActionJustReleased("interact")
             && _lastHighlightedTable != null
             && _lastHighlightedTable.CanInteract()
         )
         {
-            _lastHighlightedTable.GetTimer().Timeout -= InterractionEnded;
+            var timer = _lastHighlightedTable.GetTimer();
+            if (timer != null)
+            {
+                timer.Timeout -= InterractionEnded;
+            }
             _lastHighlightedTable.StopInteract();
             _isInteracting = false;
         }

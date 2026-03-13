@@ -36,17 +36,17 @@ public partial class CuttingTable : Table
         GetNode<Sprite3D>("CuttingProgressBar").SetVisible(false);
 
         GetNode<Node3D>("Item").RemoveChild(placedItem);
+        var itemName = (placedItem as Food).GetFoodName();
         placedItem =
-            ResourceLoader
-                .Load<PackedScene>("res://KitchenChaos/Assets/Meshes/TomatoSliced.fbx")
-                .Instantiate() as Node3D; // TODO: food spawner
-        placedItem.SetScale(new Vector3(4, 4, 4));
-        placedItem.SetName("TomatoSliced"); // TODO: spawner of food
+            ResourceLoader.Load<PackedScene>(FoodConstants.CuttableFood[itemName]).Instantiate()
+            as Node3D;
         AddItemToScene();
     }
 
-    // TODO: add map of asset => chopped asset and check if asset is present in map
-    public override bool CanInteract() => placedItem != null && placedItem.GetName() == "Tomato";
+    public override bool CanInteract() =>
+        placedItem != null
+        && placedItem is Food
+        && FoodConstants.CuttableFood.ContainsKey((placedItem as Food).GetFoodName());
 
     public override void StartInteract()
     {

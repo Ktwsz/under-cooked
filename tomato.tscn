@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://j3t43a68i4pv"]
+
+[ext_resource type="PackedScene" uid="uid://squ75dg88pcp" path="res://KitchenChaos/Assets/Meshes/Tomato.fbx" id="1_ajaoc"]
+[ext_resource type="Script" uid="uid://bga6apa3s2jql" path="res://Tomato.cs" id="1_joa5w"]
+
+[node name="Tomato" type="Node3D" unique_id=99160782]
+script = ExtResource("1_joa5w")
+
+[node name="Tomato" parent="." unique_id=536503126 instance=ExtResource("1_ajaoc")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

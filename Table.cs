@@ -4,7 +4,7 @@ using Godot;
 public partial class Table : StaticBody3D
 {
     [Export]
-    public string InitPlacedItem { get; set; } = null; // TODO: spawner of food
+    public PackedScene InitPlacedItem;
 
     protected Node3D placedItem = null;
 
@@ -21,9 +21,7 @@ public partial class Table : StaticBody3D
     {
         if (InitPlacedItem != null)
         {
-            placedItem = ResourceLoader.Load<PackedScene>(InitPlacedItem).Instantiate() as Node3D;
-            placedItem.SetScale(new Vector3(4, 4, 4));
-            placedItem.SetName("Tomato"); // TODO: spawner of food
+            placedItem = InitPlacedItem.Instantiate() as Node3D;
             AddItemToScene();
         }
     }

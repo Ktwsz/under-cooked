@@ -2,18 +2,18 @@
 
 [ext_resource type="Script" uid="uid://b6ylr5rbu3vjr" path="res://CuttingTable.cs" id="1_6ojdj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2yk1d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ojdj"]
 albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2yk1d"]
-material = SubResource("StandardMaterial3D_2yk1d")
+material = SubResource("StandardMaterial3D_6ojdj")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8cwr"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.3372549)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ojdj"]
-material = SubResource("StandardMaterial3D_1emcc")
+material = SubResource("StandardMaterial3D_g8cwr")
 size = Vector3(1.1, 1.1, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g8cwr"]
