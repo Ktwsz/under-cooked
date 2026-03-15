@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://7h5jbikmy1d4"]
+
+[ext_resource type="Script" uid="uid://cm318se1ia0xa" path="res://Trash.cs" id="1_43he1"]
+[ext_resource type="PackedScene" uid="uid://dodmacy8l2kqq" path="res://KitchenChaos/Assets/Meshes/Trash.fbx" id="1_avkd5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.3372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_avkd5"]
+material = SubResource("StandardMaterial3D_1emcc")
+size = Vector3(1.1, 1.1, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43he1"]
+
+[node name="Trash" type="StaticBody3D" unique_id=1160235291]
+script = ExtResource("1_43he1")
+
+[node name="Trash" parent="." unique_id=2051700243 instance=ExtResource("1_avkd5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.5, 0)
+
+[node name="Highlight" type="MeshInstance3D" parent="." unique_id=1433649593]
+visible = false
+mesh = SubResource("BoxMesh_avkd5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1586857132]
+shape = SubResource("BoxShape3D_43he1")
+
+[node name="Item" type="Node3D" parent="." unique_id=1283945559]

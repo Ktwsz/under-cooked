@@ -26,7 +26,7 @@ public partial class Table : StaticBody3D
         }
     }
 
-    public bool TryPlaceItem(Node3D item)
+    public virtual bool TryPlaceItem(Node3D item)
     {
         if (placedItem != null)
             return false;

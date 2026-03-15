@@ -59,22 +59,22 @@ public partial class Player : CharacterBody3D
             (_lastHighlightedTable.FindChild("Highlight") as Node3D).SetVisible(false);
         }
         var parent = GetParent<Node3D>();
-        var children = parent.FindChildren("*Table*");
         // TODO: give priority to the tables in front of the player (filter tables by angle between it and players pivot?)
-        var closestTable = children
-            .Where(table => GetDistToTable(table as Node3D) <= 3.0)
+        var closestTable = parent
+            .GetChildren()
+            .Where(node => node is Table)
+            .Select(node => node as Table)
+            .Where(table => GetDistToTable(table) <= 3.0)
             .DefaultIfEmpty(null)
             .Aggregate(
                 (minTable, nextTable) =>
-                    GetDistToTable(minTable as Node3D) < GetDistToTable(nextTable as Node3D)
-                        ? minTable
-                        : nextTable
+                    GetDistToTable(minTable) < GetDistToTable(nextTable) ? minTable : nextTable
             );
         if (closestTable != null)
         {
             (closestTable.FindChild("Highlight") as Node3D).SetVisible(true);
         }
-        _lastHighlightedTable = closestTable as Table;
+        _lastHighlightedTable = closestTable;
     }
 
     private void ReparentHeldItem()
