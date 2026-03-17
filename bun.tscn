@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bp1xam4fqrmn1"]
 
 [ext_resource type="PackedScene" uid="uid://c7xfwt460y6ia" path="res://KitchenChaos/Assets/Meshes/BreadBottom.fbx" id="1_3pnhr"]
+[ext_resource type="Script" uid="uid://dt0g72kuqmd36" path="res://Bun.cs" id="1_y01k6"]
 [ext_resource type="PackedScene" uid="uid://10opyx57ce2i" path="res://KitchenChaos/Assets/Meshes/BreadTop.fbx" id="2_y01k6"]
 
 [node name="Bun" type="Node3D" unique_id=588018866]
+script = ExtResource("1_y01k6")
 
 [node name="BreadBottom" parent="." unique_id=817007339 instance=ExtResource("1_3pnhr")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.1, 0)

@@ -6,14 +6,22 @@ public partial class Table : StaticBody3D
     [Export]
     public PackedScene InitPlacedItem;
 
-    protected Node3D placedItem = null;
+    public Node3D placedItem = null;
 
     protected void AddItemToScene()
     {
         if (placedItem.GetParent() == null)
+        {
             GetNode<Node>("Item").AddChild(placedItem);
+        }
         else
+        {
+            if (placedItem.GetNode("../..") is Player)
+            {
+                (placedItem.GetNode("../..") as Player).SetHeldItem(null);
+            }
             placedItem.Reparent(GetNode<Node>("Item"), false);
+        }
         placedItem.SetPosition(new Vector3(0, 0.5f, 0));
     }
 
@@ -26,14 +34,30 @@ public partial class Table : StaticBody3D
         }
     }
 
-    public virtual bool TryPlaceItem(Node3D item)
+    public virtual void TryPlaceItem(Node3D item)
     {
         if (placedItem != null)
-            return false;
+        {
+            if (item is FryingPan)
+            { // bun or plate...
+                if (placedItem is Bun)
+                {
+                    (placedItem as Bun).Add((item as FryingPan).GetItem());
+                    return;
+                }
+                (item as FryingPan).Add(placedItem);
+            }
+            if (placedItem is FryingPan)
+            {
+                (placedItem as FryingPan).Add(item);
+                return;
+            }
+
+            return;
+        }
 
         placedItem = item;
         AddItemToScene();
-        return true;
     }
 
     public virtual Node3D PickupItem()
@@ -49,5 +73,5 @@ public partial class Table : StaticBody3D
 
     public virtual void StopInteract() { }
 
-    public virtual Timer GetTimer() => null;
+    public virtual Timer GetTimer() => null; // TODO: remove this, only cutting table has interactions
 }

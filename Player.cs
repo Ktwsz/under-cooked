@@ -61,8 +61,8 @@ public partial class Player : CharacterBody3D
         var parent = GetParent<Node3D>();
         // TODO: give priority to the tables in front of the player (filter tables by angle between it and players pivot?)
         var closestTable = parent
+            .GetNode<Node3D>("Tables")
             .GetChildren()
-            .Where(node => node is Table)
             .Select(node => node as Table)
             .Where(table => GetDistToTable(table) <= 3.0)
             .DefaultIfEmpty(null)
@@ -79,18 +79,20 @@ public partial class Player : CharacterBody3D
 
     private void ReparentHeldItem()
     {
-        if (_heldItem != null)
+        if (_heldItem == null)
         {
-            if (_heldItem.GetParent() == null)
-            {
-                GetNode<Node3D>("Pivot").AddChild(_heldItem);
-            }
-            else
-            {
-                _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
-            }
-            _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
+            return;
         }
+
+        if (_heldItem.GetParent() == null)
+        {
+            GetNode<Node3D>("Pivot").AddChild(_heldItem);
+        }
+        else
+        {
+            _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
+        }
+        _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
     }
 
     private void PickupAction()
@@ -100,15 +102,11 @@ public partial class Player : CharacterBody3D
 
         if (_heldItem == null)
         {
-            _heldItem = _lastHighlightedTable.PickupItem();
-            ReparentHeldItem();
+            SetHeldItem(_lastHighlightedTable.PickupItem());
         }
         else
         {
-            if (_lastHighlightedTable.TryPlaceItem(_heldItem))
-            {
-                _heldItem = null;
-            }
+            _lastHighlightedTable.TryPlaceItem(_heldItem);
         }
     }
 

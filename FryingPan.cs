@@ -1,0 +1,89 @@
+using System;
+using Godot;
+
+public partial class FryingPan : Node3D
+{
+    private Food item = null;
+
+    private Timer timer;
+    private ProgressBar progressBar;
+
+    public override void _Ready()
+    {
+        timer = GetNode<Timer>("Timer");
+        timer.Timeout += OnTimerEnded;
+
+        progressBar = GetNode<ProgressBar>("ProgressBar/ProgressBarViewport/ProgressBar");
+    }
+
+    public override void _Process(double delta)
+    {
+        var timeLeft = timer.GetTimeLeft();
+        var waitTime = timer.GetWaitTime();
+
+        progressBar.Value = 100 * (waitTime - timeLeft) / waitTime;
+    }
+
+    public void OnTimerEnded()
+    {
+        timer.Stop();
+        GetNode<Sprite3D>("ProgressBar").SetVisible(false);
+
+        RemoveChild(item);
+        item = ResourceLoader.Load<PackedScene>("res://cooked_meat.tscn").Instantiate() as Food;
+        AddChild(item); // TODO: separate function, set appropriate position?
+
+        // TDOD: start burning the meat, separate timer?
+    }
+
+    public Food GetItem() => item;
+
+    public void Add(Node3D tmp)
+    {
+        if (!(tmp is Food) || (tmp as Food).GetFoodName() != "UncookedMeat")
+        {
+            return;
+        }
+
+        if (tmp.GetParent() == null)
+        {
+            item = tmp as Food;
+            AddChild(tmp); // TODO: separate function, set appropriate position?
+        }
+        else
+        {
+            if (tmp.GetNode("../..") is Player)
+            {
+                (tmp.GetNode("../..") as Player).SetHeldItem(null);
+            }
+            if (tmp.GetNode("../..") is Table)
+            {
+                (tmp.GetNode("../..") as Table).placedItem = null;
+            }
+            item = tmp as Food;
+            tmp.Reparent(this, false); // TODO: separate function, set appropriate position?
+            //placedItem.SetPosition(new Vector3(0, 0.5f, 0));
+        }
+    }
+
+    public void StartFrying()
+    {
+        if (item == null || (item as Node3D).GetName() == "CookedMeat")
+            return;
+
+        if (timer.IsStopped())
+        {
+            timer.Start();
+        }
+        else
+        {
+            timer.SetPaused(false);
+        }
+        GetNode<Sprite3D>("ProgressBar").SetVisible(true);
+    }
+
+    public void StopFrying()
+    {
+        timer.SetPaused(true);
+    }
+}
