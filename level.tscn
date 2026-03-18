@@ -83,15 +83,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 2)
 
 [node name="SpawningTableTomato" parent="Tables" unique_id=497865140 instance=ExtResource("4_0b4ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -2)
-spawnedFood = ExtResource("3_km5ld")
+SpawnedFood = ExtResource("3_km5ld")
 
 [node name="SpawningTableBun" parent="Tables" unique_id=1051198055 instance=ExtResource("4_0b4ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)
-spawnedFood = ExtResource("6_n6hdu")
+SpawnedFood = ExtResource("6_n6hdu")
 
 [node name="SpawningTableCabbage" parent="Tables" unique_id=1126089362 instance=ExtResource("4_0b4ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -2)
-spawnedFood = ExtResource("8_km5ld")
+SpawnedFood = ExtResource("8_km5ld")
 
 [node name="Trash" parent="Tables" unique_id=1160235291 instance=ExtResource("8_i2t4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 3)

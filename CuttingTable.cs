@@ -3,28 +3,29 @@ using Godot;
 
 public partial class CuttingTable : Table
 {
-    private Timer timer;
-    private ProgressBar progressBar;
+    private Timer _timer;
+    public Timer Timer => _timer;
+    private ProgressBar _progressBar;
 
     public override void _Ready()
     {
-        timer = GetNode<Timer>("Timer");
-        timer.Timeout += OnTimerEnded;
+        _timer = GetNode<Timer>("Timer");
+        _timer.Timeout += OnTimerEnded;
 
-        progressBar = GetNode<ProgressBar>("CuttingProgressBar/ProgressBarViewport/ProgressBar");
+        _progressBar = GetNode<ProgressBar>("CuttingProgressBar/ProgressBarViewport/ProgressBar");
     }
 
     public override void _Process(double delta)
     {
-        var timeLeft = timer.GetTimeLeft();
-        var waitTime = timer.GetWaitTime();
+        var timeLeft = _timer.GetTimeLeft();
+        var waitTime = _timer.GetWaitTime();
 
-        progressBar.Value = 100 * (waitTime - timeLeft) / waitTime;
+        _progressBar.Value = 100 * (waitTime - timeLeft) / waitTime;
     }
 
     public override Node3D PickupItem()
     {
-        if (!timer.IsStopped())
+        if (!_timer.IsStopped())
             return null;
 
         return base.PickupItem();
@@ -32,39 +33,26 @@ public partial class CuttingTable : Table
 
     public void OnTimerEnded()
     {
-        timer.Stop();
+        _timer.Stop();
         GetNode<Sprite3D>("CuttingProgressBar").SetVisible(false);
 
-        GetNode<Node3D>("Item").RemoveChild(placedItem);
-        var itemName = (placedItem as Food).GetFoodName();
-        placedItem =
+        GetNode<Node3D>("Item").RemoveChild(PlacedItem);
+        var itemName = PlacedItem.GetName();
+        PlacedItem =
             ResourceLoader.Load<PackedScene>(FoodConstants.CuttableFood[itemName]).Instantiate()
             as Node3D;
         AddItemToScene();
     }
 
-    public override bool CanInteract() =>
-        placedItem != null
-        && placedItem is Food
-        && FoodConstants.CuttableFood.ContainsKey((placedItem as Food).GetFoodName());
-
-    public override void StartInteract()
+    public void StartInteract()
     {
-        if (timer.IsStopped())
-        {
-            timer.Start();
-        }
+        if (_timer.IsStopped())
+            _timer.Start();
         else
-        {
-            timer.SetPaused(false);
-        }
+            _timer.SetPaused(false);
+
         GetNode<Sprite3D>("CuttingProgressBar").SetVisible(true);
     }
 
-    public override void StopInteract()
-    {
-        timer.SetPaused(true);
-    }
-
-    public override Timer GetTimer() => timer;
+    public void StopInteract() => _timer.SetPaused(true);
 }

@@ -3,7 +3,7 @@ using Godot;
 
 public partial class FryingPan : Node3D
 {
-    private Food item = null;
+    private Node3D item = null;
 
     private Timer timer;
     private ProgressBar progressBar;
@@ -30,37 +30,33 @@ public partial class FryingPan : Node3D
         GetNode<Sprite3D>("ProgressBar").SetVisible(false);
 
         RemoveChild(item);
-        item = ResourceLoader.Load<PackedScene>("res://cooked_meat.tscn").Instantiate() as Food;
+        item = ResourceLoader.Load<PackedScene>("res://cooked_meat.tscn").Instantiate() as Node3D;
         AddChild(item); // TODO: separate function, set appropriate position?
 
         // TDOD: start burning the meat, separate timer?
     }
 
-    public Food GetItem() => item;
+    public Node3D GetItem() => item;
 
     public void Add(Node3D tmp)
     {
-        if (!(tmp is Food) || (tmp as Food).GetFoodName() != "UncookedMeat")
-        {
+        if (!FoodConstants.IsFood(tmp) || tmp.GetName() != "UncookedMeat")
             return;
-        }
 
         if (tmp.GetParent() == null)
         {
-            item = tmp as Food;
+            item = tmp;
             AddChild(tmp); // TODO: separate function, set appropriate position?
         }
         else
         {
             if (tmp.GetNode("../..") is Player)
-            {
-                (tmp.GetNode("../..") as Player).SetHeldItem(null);
-            }
+                (tmp.GetNode("../..") as Player).HeldItem = null;
+
             if (tmp.GetNode("../..") is Table)
-            {
-                (tmp.GetNode("../..") as Table).placedItem = null;
-            }
-            item = tmp as Food;
+                (tmp.GetNode("../..") as Table).PlacedItem = null;
+
+            item = tmp;
             tmp.Reparent(this, false); // TODO: separate function, set appropriate position?
             //placedItem.SetPosition(new Vector3(0, 0.5f, 0));
         }
@@ -72,18 +68,12 @@ public partial class FryingPan : Node3D
             return;
 
         if (timer.IsStopped())
-        {
             timer.Start();
-        }
         else
-        {
             timer.SetPaused(false);
-        }
+
         GetNode<Sprite3D>("ProgressBar").SetVisible(true);
     }
 
-    public void StopFrying()
-    {
-        timer.SetPaused(true);
-    }
+    public void StopFrying() => timer.SetPaused(true);
 }

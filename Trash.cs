@@ -7,7 +7,7 @@ public partial class Trash : Table
     {
         base.TryPlaceItem(item);
 
-        GetNode<Node3D>("Item").RemoveChild(placedItem); // TODO: check for pans and plates
-        placedItem = null;
+        GetNode<Node3D>("Item").RemoveChild(PlacedItem); // TODO: check for pans and plates
+        PlacedItem = null;
     }
 }

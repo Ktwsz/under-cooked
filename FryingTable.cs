@@ -5,17 +5,17 @@ public partial class FryingTable : Table
 {
     public override void TryPlaceItem(Node3D item)
     {
-        if (placedItem == null && !(item is FryingPan))
+        if (PlacedItem == null && !(item is FryingPan))
             return;
 
         base.TryPlaceItem(item);
-        if (placedItem != null)
-            (placedItem as FryingPan).StartFrying();
+        if (PlacedItem != null)
+            (PlacedItem as FryingPan).StartFrying();
     }
 
     public override Node3D PickupItem()
     {
-        (placedItem as FryingPan).StopFrying();
+        (PlacedItem as FryingPan).StopFrying();
         return base.PickupItem();
     }
 }

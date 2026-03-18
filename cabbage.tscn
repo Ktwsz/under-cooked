@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://wkx8jbe18pc"]
 
 [ext_resource type="PackedScene" uid="uid://btloqsqcvqgkv" path="res://KitchenChaos/Assets/Meshes/Cabbage.fbx" id="1_iuhr8"]
-[ext_resource type="Script" uid="uid://3c6jo4fil22" path="res://Cabbage.cs" id="1_tn4sh"]
 
 [node name="Cabbage" type="Node3D" unique_id=1702499071]
-script = ExtResource("1_tn4sh")
 
 [node name="Cabbage" parent="." unique_id=1979097073 instance=ExtResource("1_iuhr8")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

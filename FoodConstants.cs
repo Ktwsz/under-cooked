@@ -9,4 +9,17 @@ public partial class FoodConstants : Node
         { "Tomato", "res://tomato_sliced.tscn" },
         { "Cabbage", "res://cabbage_sliced.tscn" },
     };
+
+    private static HashSet<string> _food = new HashSet<string>
+    {
+        "Bun",
+        "Cabbage",
+        "CookedMeat",
+        "SlicedCabbage",
+        "SlicedTomato",
+        "Tomato",
+        "UncookedMeat",
+    };
+
+    public static bool IsFood(Node3D node) => _food.Contains(node.GetName());
 }

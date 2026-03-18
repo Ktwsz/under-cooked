@@ -10,6 +10,15 @@ public partial class Player : CharacterBody3D
     private Vector3 _targetVelocity = Vector3.Zero;
     private Table _lastHighlightedTable = null;
     private Node3D _heldItem = null;
+    public Node3D HeldItem
+    {
+        set
+        {
+            _heldItem = value;
+            ReparentHeldItem();
+        }
+    }
+
     private bool _isInteracting = false;
 
     public override void _PhysicsProcess(double delta)
@@ -20,21 +29,16 @@ public partial class Player : CharacterBody3D
         var direction = Vector3.Zero;
 
         if (Input.IsActionPressed("move_right"))
-        {
             direction.X += 1.0f;
-        }
+
         if (Input.IsActionPressed("move_left"))
-        {
             direction.X -= 1.0f;
-        }
+
         if (Input.IsActionPressed("move_back"))
-        {
             direction.Z += 1.0f;
-        }
+
         if (Input.IsActionPressed("move_forward"))
-        {
             direction.Z -= 1.0f;
-        }
 
         if (direction != Vector3.Zero)
         {
@@ -55,9 +59,8 @@ public partial class Player : CharacterBody3D
     private void HighlightCurrentTable()
     {
         if (_lastHighlightedTable != null)
-        {
             (_lastHighlightedTable.FindChild("Highlight") as Node3D).SetVisible(false);
-        }
+
         var parent = GetParent<Node3D>();
         // TODO: give priority to the tables in front of the player (filter tables by angle between it and players pivot?)
         var closestTable = parent
@@ -70,28 +73,23 @@ public partial class Player : CharacterBody3D
                 (minTable, nextTable) =>
                     GetDistToTable(minTable) < GetDistToTable(nextTable) ? minTable : nextTable
             );
+
         if (closestTable != null)
-        {
             (closestTable.FindChild("Highlight") as Node3D).SetVisible(true);
-        }
+
         _lastHighlightedTable = closestTable;
     }
 
     private void ReparentHeldItem()
     {
         if (_heldItem == null)
-        {
             return;
-        }
 
         if (_heldItem.GetParent() == null)
-        {
             GetNode<Node3D>("Pivot").AddChild(_heldItem);
-        }
         else
-        {
             _heldItem.Reparent(GetNode<Node3D>("Pivot"), false);
-        }
+
         _heldItem.SetPosition(new Vector3(0, 0, -1.2f));
     }
 
@@ -101,25 +99,15 @@ public partial class Player : CharacterBody3D
             return;
 
         if (_heldItem == null)
-        {
-            SetHeldItem(_lastHighlightedTable.PickupItem());
-        }
+            HeldItem = _lastHighlightedTable.PickupItem();
         else
-        {
             _lastHighlightedTable.TryPlaceItem(_heldItem);
-        }
-    }
-
-    public void SetHeldItem(Node3D item)
-    {
-        _heldItem = item;
-        ReparentHeldItem();
     }
 
     private void InterractionEnded()
     {
         _isInteracting = false;
-        _lastHighlightedTable.GetTimer().Timeout -= InterractionEnded;
+        (_lastHighlightedTable as CuttingTable).Timer.Timeout -= InterractionEnded;
     }
 
     public override void _Process(double delta)
@@ -129,38 +117,30 @@ public partial class Player : CharacterBody3D
             HighlightCurrentTable();
 
             if (Input.IsActionJustPressed("pickup"))
-            {
                 PickupAction();
-            }
 
             if (
                 Input.IsActionJustPressed("interact")
                 && _heldItem == null
                 && _lastHighlightedTable != null
-                && _lastHighlightedTable.CanInteract()
+                && _lastHighlightedTable is CuttingTable
             )
             {
-                var timer = _lastHighlightedTable.GetTimer();
-                if (timer != null)
-                {
-                    timer.Timeout += InterractionEnded;
-                }
-                _lastHighlightedTable.StartInteract();
+                var cuttingTable = _lastHighlightedTable as CuttingTable;
+                cuttingTable.Timer.Timeout += InterractionEnded;
+                cuttingTable.StartInteract();
                 _isInteracting = true;
             }
         }
         else if (
             Input.IsActionJustReleased("interact")
             && _lastHighlightedTable != null
-            && _lastHighlightedTable.CanInteract()
+            && _lastHighlightedTable is CuttingTable
         )
         {
-            var timer = _lastHighlightedTable.GetTimer();
-            if (timer != null)
-            {
-                timer.Timeout -= InterractionEnded;
-            }
-            _lastHighlightedTable.StopInteract();
+            var cuttingTable = _lastHighlightedTable as CuttingTable;
+            cuttingTable.Timer.Timeout -= InterractionEnded;
+            cuttingTable.StopInteract();
             _isInteracting = false;
         }
     }

@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://blqrkpsld63ph"]
 
-[ext_resource type="Script" uid="uid://b7vie681kwgx2" path="res://TomatoSliced.cs" id="1_8odks"]
 [ext_resource type="PackedScene" uid="uid://bd0maymj5qx22" path="res://KitchenChaos/Assets/Meshes/TomatoSliced.fbx" id="1_f5q5t"]
 
 [node name="TomatoSliced" type="Node3D" unique_id=514157749]
-script = ExtResource("1_8odks")
 
 [node name="TomatoSliced" parent="." unique_id=1920249772 instance=ExtResource("1_f5q5t")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
