@@ -38,17 +38,28 @@ public partial class Table : StaticBody3D
         if (PlacedItem != null)
         {
             if (item is FryingPan)
-            { // bun or plate...
+            { // or plate...
                 if (PlacedItem is Bun)
                 {
-                    (PlacedItem as Bun).Add((item as FryingPan).GetItem());
+                    (PlacedItem as Bun).Add(item);
                     return;
                 }
                 (item as FryingPan).Add(PlacedItem);
+                return;
+            }
+            if (item is Bun)
+            {
+                (item as Bun).Add(PlacedItem);
+                return;
             }
             if (PlacedItem is FryingPan)
             {
                 (PlacedItem as FryingPan).Add(item);
+                return;
+            }
+            if (PlacedItem is Bun)
+            {
+                (PlacedItem as Bun).Add(item);
                 return;
             }
 

@@ -14,10 +14,10 @@ public partial class FoodConstants : Node
     {
         "Bun",
         "Cabbage",
+        "CabbageSliced",
         "CookedMeat",
-        "SlicedCabbage",
-        "SlicedTomato",
         "Tomato",
+        "TomatoSliced",
         "UncookedMeat",
     };
 

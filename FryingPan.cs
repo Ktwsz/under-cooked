@@ -32,6 +32,7 @@ public partial class FryingPan : Node3D
         RemoveChild(item);
         item = ResourceLoader.Load<PackedScene>("res://cooked_meat.tscn").Instantiate() as Node3D;
         AddChild(item); // TODO: separate function, set appropriate position?
+        item.SetPosition(new Vector3(0, 0.1f, 0));
 
         // TDOD: start burning the meat, separate timer?
     }
@@ -43,9 +44,9 @@ public partial class FryingPan : Node3D
         if (!FoodConstants.IsFood(tmp) || tmp.GetName() != "UncookedMeat")
             return;
 
+        item = tmp;
         if (tmp.GetParent() == null)
         {
-            item = tmp;
             AddChild(tmp); // TODO: separate function, set appropriate position?
         }
         else
@@ -56,10 +57,9 @@ public partial class FryingPan : Node3D
             if (tmp.GetNode("../..") is Table)
                 (tmp.GetNode("../..") as Table).PlacedItem = null;
 
-            item = tmp;
             tmp.Reparent(this, false); // TODO: separate function, set appropriate position?
-            //placedItem.SetPosition(new Vector3(0, 0.5f, 0));
         }
+        item.SetPosition(new Vector3(0, 0.1f, 0));
     }
 
     public void StartFrying()
