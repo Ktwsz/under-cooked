@@ -20,9 +20,9 @@ public partial class Bun : Node3D
 
     public void Add(Node3D tmp)
     {
-        if (tmp is FryingPan)
+        if (tmp is FryingPan fryingPan)
         {
-            Add((tmp as FryingPan).GetItem());
+            Add(fryingPan.Item);
             return;
         }
 
@@ -35,11 +35,14 @@ public partial class Bun : Node3D
         }
         else
         {
-            if (tmp.GetNode("../..") is Player)
-                (tmp.GetNode("../..") as Player).HeldItem = null;
+            if (tmp.GetNode("../..") is Player player)
+                player.HeldItem = null;
 
-            if (tmp.GetNode("../..") is Table)
-                (tmp.GetNode("../..") as Table).PlacedItem = null;
+            if (tmp.GetNode("../..") is Table table)
+                table.PlacedItem = null;
+
+            if (tmp.GetParent() is FryingPan fryingPan)
+                fryingPan.Item = null;
 
             tmp.Reparent(this, false); // TODO: separate function, set appropriate position?
         }

@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://di11gcsngqg8d"]
 
 [ext_resource type="PackedScene" uid="uid://doal7ynwwo4yj" path="res://KitchenChaos/Assets/Meshes/MeatUncooked.fbx" id="1_6mt2h"]
-[ext_resource type="Script" uid="uid://djs8optfaao8c" path="res://UncookedMeat.cs" id="1_7b01u"]
 
 [node name="UncookedMeat" type="Node3D" unique_id=1933666795]
-script = ExtResource("1_7b01u")
 
 [node name="MeatUncooked" parent="." unique_id=437502502 instance=ExtResource("1_6mt2h")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

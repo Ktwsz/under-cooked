@@ -123,10 +123,9 @@ public partial class Player : CharacterBody3D
                 Input.IsActionJustPressed("interact")
                 && _heldItem == null
                 && _lastHighlightedTable != null
-                && _lastHighlightedTable is CuttingTable
+                && _lastHighlightedTable is CuttingTable cuttingTable
             )
             {
-                var cuttingTable = _lastHighlightedTable as CuttingTable;
                 cuttingTable.Timer.Timeout += InterractionEnded;
                 cuttingTable.StartInteract();
                 _isInteracting = true;
@@ -135,10 +134,9 @@ public partial class Player : CharacterBody3D
         else if (
             Input.IsActionJustReleased("interact")
             && _lastHighlightedTable != null
-            && _lastHighlightedTable is CuttingTable
+            && _lastHighlightedTable is CuttingTable cuttingTable
         )
         {
-            var cuttingTable = _lastHighlightedTable as CuttingTable;
             cuttingTable.Timer.Timeout -= InterractionEnded;
             cuttingTable.StopInteract();
             _isInteracting = false;
