@@ -56,13 +56,26 @@ public partial class Player : CharacterBody3D
     private float GetDistToTable(Node3D table) =>
         table.GetGlobalPosition().DistanceSquaredTo(GetGlobalPosition());
 
+    private Vector3 GetPlayerDirectionVector()
+    {
+        var angle = GetNode<Node3D>("Pivot").GetGlobalRotation().Y;
+        return new Vector3(-(float)Math.Sin(angle), 0, -(float)Math.Cos(angle));
+    }
+
+    private float GetAngleToTable(Node3D table, Vector3 directionVector) =>
+        (table.GetGlobalPosition() - GetGlobalPosition()).AngleTo(directionVector);
+
+    private float GetTableMetric(Node3D table, Vector3 directionVector) =>
+        0.2f * GetDistToTable(table) / 0.3f
+        + 0.8f * (GetAngleToTable(table, directionVector) / (float)Math.PI);
+
     private void HighlightCurrentTable()
     {
         if (_lastHighlightedTable != null)
             (_lastHighlightedTable.FindChild("Highlight") as Node3D).SetVisible(false);
 
+        var directionVector = GetPlayerDirectionVector();
         var parent = GetParent<Node3D>();
-        // TODO: give priority to the tables in front of the player (filter tables by angle between it and players pivot?)
         var closestTable = parent
             .GetNode<Node3D>("Tables")
             .GetChildren()
@@ -71,7 +84,10 @@ public partial class Player : CharacterBody3D
             .DefaultIfEmpty(null)
             .Aggregate(
                 (minTable, nextTable) =>
-                    GetDistToTable(minTable) < GetDistToTable(nextTable) ? minTable : nextTable
+                    GetTableMetric(minTable, directionVector)
+                    < GetTableMetric(nextTable, directionVector)
+                        ? minTable
+                        : nextTable
             );
 
         if (closestTable != null)
