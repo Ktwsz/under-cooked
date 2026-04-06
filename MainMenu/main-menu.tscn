@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://lugpa8ovp8nw"]
+
+[ext_resource type="Texture2D" uid="uid://clmolxq7nqq1p" path="res://KitchenChaos/Assets/MainMenu/Background.png" id="1_qpx1x"]
+[ext_resource type="Texture2D" uid="uid://qjccgv6bewhs" path="res://KitchenChaos/Assets/MainMenu/UnderCooked.png" id="2_s1x6u"]
+[ext_resource type="LabelSettings" uid="uid://rhbd3l1bm86u" path="res://MainMenu/MainMenuText.tres" id="3_71wc8"]
+[ext_resource type="Script" uid="uid://dwqumatf5007u" path="res://MainMenu/main_menu.gd" id="4_83wy4"]
+[ext_resource type="FontFile" uid="uid://dyaej2iboqul2" path="res://KitchenChaos/Assets/Fonts/Nunito-Bold.ttf" id="5_h3nvj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52n7k"]
+line_spacing = -5.0
+font = ExtResource("5_h3nvj")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" unique_id=1754711728]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qpx1x")
+expand_mode = 1
+script = ExtResource("4_83wy4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1594871841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.5
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1604160930]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=786870068]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1691950904]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="GameLogo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1326196629]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_s1x6u")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=918755572]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ContinueButton" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=166060415]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Continue"
+label_settings = ExtResource("3_71wc8")
+
+[node name="NewGameButton" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=144283339]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "New Game"
+label_settings = ExtResource("3_71wc8")
+
+[node name="OptionsButton" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1813518695]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+text = "Options"
+label_settings = ExtResource("3_71wc8")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=765037102]
+layout_mode = 2
+text = "v0.1.0 Alpha Female
+Łacia Studios ®"
+label_settings = SubResource("LabelSettings_52n7k")
+
+[node name="LevelGrid" type="GridContainer" parent="MarginContainer/HBoxContainer" unique_id=1583545682]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 3
+
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" to="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" method="_on_continue_button_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" to="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" method="_on_new_game_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton" to="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" method="_on_options_gui_input"]

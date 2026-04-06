@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5jmnowrxyjyp"
-path="res://.godot/imported/label_continue.png-14449511174ff30ad7c976c5b950514c.ctex"
+uid="uid://qjccgv6bewhs"
+path="res://.godot/imported/UnderCooked.png-2e4a4c793f534dff781f364bcaf4ab7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://label_continue.png"
-dest_files=["res://.godot/imported/label_continue.png-14449511174ff30ad7c976c5b950514c.ctex"]
+source_file="res://KitchenChaos/Assets/MainMenu/UnderCooked.png"
+dest_files=["res://.godot/imported/UnderCooked.png-2e4a4c793f534dff781f364bcaf4ab7f.ctex"]
 
 [params]
 
