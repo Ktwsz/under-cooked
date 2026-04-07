@@ -33,6 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_5xgho")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1947858169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13253593, 0.13965225, 0.20815277)
 mesh = SubResource("BoxMesh_u52ul")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=838374962]
