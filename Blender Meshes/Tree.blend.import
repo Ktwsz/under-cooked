@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://deajd87w0las1"
-path="res://.godot/imported/Stove.blend-d98bcd95003114995a4eb7e820098b1a.scn"
+uid="uid://dhciuvrbtp4iu"
+path="res://.godot/imported/Tree.blend-ab5b5f39a9b5ca257908da881b4c138a.scn"
 
 [deps]
 
-source_file="res://Blender Meshes/Stove.blend"
-dest_files=["res://.godot/imported/Stove.blend-d98bcd95003114995a4eb7e820098b1a.scn"]
+source_file="res://Blender Meshes/Tree.blend"
+dest_files=["res://.godot/imported/Tree.blend-ab5b5f39a9b5ca257908da881b4c138a.scn"]
 
 [params]
 

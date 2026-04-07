@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://deajd87w0las1"
-path="res://.godot/imported/Stove.blend-d98bcd95003114995a4eb7e820098b1a.scn"
+uid="uid://pqk1nec6r18k"
+path="res://.godot/imported/Tile_Floor.blend-f730522af9ca628efb202c4523e09e6c.scn"
 
 [deps]
 
-source_file="res://Blender Meshes/Stove.blend"
-dest_files=["res://.godot/imported/Stove.blend-d98bcd95003114995a4eb7e820098b1a.scn"]
+source_file="res://Blender Meshes/Tile_Floor.blend"
+dest_files=["res://.godot/imported/Tile_Floor.blend-f730522af9ca628efb202c4523e09e6c.scn"]
 
 [params]
 

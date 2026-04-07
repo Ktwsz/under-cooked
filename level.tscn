@@ -11,11 +11,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u52ul"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6hdu"]
 albedo_color = Color(0.3403393, 0.34033933, 0.3403393, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
-material = SubResource("StandardMaterial3D_u52ul")
+material = SubResource("StandardMaterial3D_n6hdu")
 size = Vector3(60, 2, 60)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vonw3"]
@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_5xgho")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1947858169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13253593, 0.13965225, 0.20815277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04749298, 0.2044487, 0.27135396)
 mesh = SubResource("BoxMesh_u52ul")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=838374962]
