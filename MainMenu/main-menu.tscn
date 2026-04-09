@@ -104,6 +104,6 @@ theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
 columns = 3
 
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" to="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" method="_on_continue_button_gui_input"]
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" to="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" method="_on_new_game_gui_input"]
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton" to="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" method="_on_options_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_gui_input"]
