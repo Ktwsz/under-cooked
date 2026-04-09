@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://1ciux23a3vob"]
+
+[ext_resource type="Script" uid="uid://cn6k85pkawot4" path="res://MainMenu/main_menu_level_item.gd" id="1_6t06v"]
+[ext_resource type="Texture2D" uid="uid://xox8lmkxrx0" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Cabbage.png" id="2_xdkyy"]
+[ext_resource type="LabelSettings" uid="uid://b8y1ux86l3rpo" path="res://MainMenu/LevelTextLarge.tres" id="3_uahpq"]
+[ext_resource type="LabelSettings" uid="uid://w4xfm14tfi10" path="res://MainMenu/LevelTextSmall.tres" id="4_emabo"]
+
+[node name="MainMenuLevelItem" type="VBoxContainer" unique_id=854904848]
+script = ExtResource("1_6t06v")
+
+[node name="LevelPreview" type="TextureRect" parent="." unique_id=766195374]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("2_xdkyy")
+
+[node name="LevelName" type="Label" parent="." unique_id=317005261]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level 1 - Meow Meow"
+label_settings = ExtResource("3_uahpq")
+
+[node name="LevelScore" type="Label" parent="." unique_id=1318176560]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "High score: 67"
+label_settings = ExtResource("4_emabo")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

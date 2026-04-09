@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://w4xfm14tfi10"]
+
+[ext_resource type="FontFile" uid="uid://dyaej2iboqul2" path="res://KitchenChaos/Assets/Fonts/Nunito-Bold.ttf" id="1_m5fhg"]
+
+[resource]
+font = ExtResource("1_m5fhg")
+font_size = 18
+outline_size = 3
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
