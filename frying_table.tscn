@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://cwvi3fgrdvq3q"]
 
 [ext_resource type="Script" uid="uid://cj4lq4drex7es" path="res://FryingTable.cs" id="1_vcw7a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ojdj"]
-albedo_color = Color(0.6273152, 0.0032187921, 0.9176474, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5mu4f"]
-material = SubResource("StandardMaterial3D_6ojdj")
+[ext_resource type="PackedScene" uid="uid://deajd87w0las1" path="res://Blender Meshes/Stove.blend" id="2_asyfx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8cwr"]
 transparency = 1
@@ -14,17 +9,15 @@ albedo_color = Color(1, 1, 1, 0.3372549)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vcw7a"]
 material = SubResource("StandardMaterial3D_g8cwr")
-size = Vector3(1.1, 1.1, 1.1)
+size = Vector3(1.1, 0.6, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_asyfx"]
 
 [node name="FryingTable" type="StaticBody3D" unique_id=529205047]
 script = ExtResource("1_vcw7a")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=606858380]
-mesh = SubResource("BoxMesh_5mu4f")
-
 [node name="Highlight" type="MeshInstance3D" parent="." unique_id=1543807005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 visible = false
 mesh = SubResource("BoxMesh_vcw7a")
 
@@ -32,3 +25,7 @@ mesh = SubResource("BoxMesh_vcw7a")
 shape = SubResource("BoxShape3D_asyfx")
 
 [node name="Item" type="Node3D" parent="." unique_id=352538366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Stove2" parent="." unique_id=1262273693 instance=ExtResource("2_asyfx")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)

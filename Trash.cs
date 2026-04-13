@@ -8,6 +8,7 @@ public partial class Trash : Table
         if (item is FryingPan fryingPan)
         {
             TryPlaceItem(fryingPan.Item);
+            fryingPan.Item = null;
             return;
         }
 
@@ -17,6 +18,7 @@ public partial class Trash : Table
             {
                 TryPlaceItem(child as Node3D);
             }
+            item.GetNode<Node3D>("Items").GetChildren().Clear();
             return;
         }
 

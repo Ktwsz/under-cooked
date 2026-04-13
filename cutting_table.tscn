@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://clmuyc0jjvrh0"]
 
 [ext_resource type="Script" uid="uid://b6ylr5rbu3vjr" path="res://CuttingTable.cs" id="1_6ojdj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ojdj"]
-albedo_color = Color(0, 1, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2yk1d"]
-material = SubResource("StandardMaterial3D_6ojdj")
+[ext_resource type="PackedScene" uid="uid://i1iplcho2x05" path="res://Blender Meshes/Kitchen_Cabin.blend" id="2_g8cwr"]
+[ext_resource type="PackedScene" uid="uid://b7vmsq3l2ebo" path="res://Blender Meshes/Cutting_Board.blend" id="3_744ee"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8cwr"]
 transparency = 1
@@ -14,7 +10,7 @@ albedo_color = Color(1, 1, 1, 0.3372549)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ojdj"]
 material = SubResource("StandardMaterial3D_g8cwr")
-size = Vector3(1.1, 1.1, 1.1)
+size = Vector3(1.1, 0.6, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g8cwr"]
 
@@ -24,10 +20,14 @@ viewport_path = NodePath("CuttingProgressBar/ProgressBarViewport")
 [node name="CuttingTable" type="StaticBody3D" unique_id=560797329]
 script = ExtResource("1_6ojdj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=548722614]
-mesh = SubResource("BoxMesh_2yk1d")
+[node name="Kitchen_Cabin2" parent="." unique_id=1403260955 instance=ExtResource("2_g8cwr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0.05)
+
+[node name="Cutting_Board2" parent="Kitchen_Cabin2" unique_id=1680334682 instance=ExtResource("3_744ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52, -0.05, -0.9)
 
 [node name="Highlight" type="MeshInstance3D" parent="." unique_id=770216924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 visible = false
 mesh = SubResource("BoxMesh_6ojdj")
 
@@ -35,6 +35,7 @@ mesh = SubResource("BoxMesh_6ojdj")
 shape = SubResource("BoxShape3D_g8cwr")
 
 [node name="Item" type="Node3D" parent="." unique_id=398907091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=5782585]
 wait_time = 2.0
