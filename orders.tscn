@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ddptrj4b0b1m"]
+
+[ext_resource type="Script" uid="uid://dsppy8i4cihmd" path="res://orders.gd" id="1_f8tir"]
+
+[node name="Orders" type="MarginContainer" unique_id=1139651646]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_f8tir")
+
+[node name="OrderList" type="HBoxContainer" parent="." unique_id=2083426833]
+layout_mode = 2
+theme_override_constants/separation = 10

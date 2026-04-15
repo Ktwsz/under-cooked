@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://wkx8jbe18pc" path="res://cabbage.tscn" id="8_km5ld"]
 [ext_resource type="PackedScene" uid="uid://cwvi3fgrdvq3q" path="res://frying_table.tscn" id="11_2orkt"]
 [ext_resource type="PackedScene" uid="uid://cr5f0r045pv5p" path="res://plate.tscn" id="12_aicyk"]
+[ext_resource type="PackedScene" uid="uid://kssyutc2s03q" path="res://timer.tscn" id="13_h6smj"]
+[ext_resource type="PackedScene" uid="uid://ddptrj4b0b1m" path="res://orders.tscn" id="13_v5j5c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
@@ -116,3 +118,20 @@ InitPlacedItem = ExtResource("12_aicyk")
 [node name="Table13" parent="Tables" unique_id=2085314670 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4)
 InitPlacedItem = ExtResource("12_aicyk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2104378571]
+
+[node name="Orders" parent="CanvasLayer" unique_id=1672745282 instance=ExtResource("13_v5j5c")]
+
+[node name="Timer" parent="CanvasLayer" unique_id=1341699542 instance=ExtResource("13_h6smj")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -100.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
