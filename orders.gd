@@ -1,6 +1,7 @@
 extends MarginContainer
 
 @onready var order_list = $OrderList
+@onready var timer = $Timer
 
 var order_item = preload("res://order_item.tscn")
 const OrderItem = preload("res://order_item.gd")
@@ -11,8 +12,8 @@ var orders = [
 	{
 		"id": "order_1",
 		"texture_path": "res://icon.svg",
-		"start_time": Time.get_unix_time_from_system() + 5,
-		"end_time": Time.get_unix_time_from_system() + 35,
+		"start_time": 55,
+		"duration": 30,
 		"ingredients": [
 			{
 				"texture_path": "res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png",
@@ -34,8 +35,8 @@ var orders = [
 	{
 		"id": "order_1",
 		"texture_path": "res://icon.svg",
-		"start_time": Time.get_unix_time_from_system() + 10,
-		"end_time": Time.get_unix_time_from_system() + 40,
+		"start_time": 50,
+		"duration": 25,
 		"ingredients": [
 			{
 				"texture_path": "res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png",
@@ -68,7 +69,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	for order in order_items:
-		if Time.get_unix_time_from_system() < order.start_time:
+		if timer.time_left > order.start_time:
 			continue
 		
 		if order.is_completed:

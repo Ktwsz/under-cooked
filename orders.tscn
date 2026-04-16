@@ -14,3 +14,8 @@ script = ExtResource("1_f8tir")
 [node name="OrderList" type="HBoxContainer" parent="." unique_id=2083426833]
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="Timer" type="Timer" parent="." unique_id=1696338516]
+wait_time = 60.0
+one_shot = true
+autostart = true
