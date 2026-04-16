@@ -36,7 +36,7 @@ var orders = [
 		"id": "order_1",
 		"texture_path": "res://icon.svg",
 		"start_time": 50,
-		"duration": 25,
+		"duration": 20,
 		"ingredients": [
 			{
 				"texture_path": "res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png",
