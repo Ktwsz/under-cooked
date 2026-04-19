@@ -12,8 +12,8 @@ func _ready() -> void:
 	timer.start(initial_time)
 
 
-func format_time(t):
-	var minutes = int(t) / 60
+func format_time(t) -> String:
+	var minutes = int(t / 60) 
 	var seconds = int(t) % 60
 	return "%02d:%02d" % [minutes, seconds]
 
@@ -24,5 +24,5 @@ func _process(_delta: float) -> void:
 	progress_bar.value = 100 * timer.time_left / initial_time
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	timer.stop()

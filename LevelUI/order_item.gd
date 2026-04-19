@@ -5,15 +5,15 @@ extends PanelContainer
 @onready var ingredients = $MarginContainer/VBoxContainer/Ingredients
 @onready var timer = $Timer
 
-var order_ingredient = preload("res://order_ingredient.tscn")
+var order_ingredient = preload("res://LevelUI/order_ingredient.tscn")
 
-var order_texture
-var ingredient_textures = []
+var order_texture: Resource
+var ingredient_textures: Array[Resource] = []
 var start_time: float
 var duration: float = 0
-var is_started = false
-var is_completed = false
-var is_order_visible = false
+var is_started: bool = false
+var is_completed: bool = false
+var is_order_visible: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
