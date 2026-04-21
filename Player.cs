@@ -140,6 +140,7 @@ public partial class Player : CharacterBody3D
                 && _heldItem == null
                 && _lastHighlightedTable != null
                 && _lastHighlightedTable is CuttingTable cuttingTable
+                && cuttingTable.CanCut()
             )
             {
                 cuttingTable.Timer.Timeout += InterractionEnded;
