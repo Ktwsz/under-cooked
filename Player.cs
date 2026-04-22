@@ -135,27 +135,28 @@ public partial class Player : CharacterBody3D
 			if (Input.IsActionJustPressed("pickup"))
 				PickupAction();
 
-			if (
-				Input.IsActionJustPressed("interact")
-				&& _heldItem == null
-				&& _lastHighlightedTable != null
-				&& _lastHighlightedTable is CuttingTable cuttingTable
-			)
-			{
-				cuttingTable.Timer.Timeout += InterractionEnded;
-				cuttingTable.StartInteract();
-				_isInteracting = true;
-			}
-		}
-		else if (
-			Input.IsActionJustReleased("interact")
-			&& _lastHighlightedTable != null
-			&& _lastHighlightedTable is CuttingTable cuttingTable
-		)
-		{
-			cuttingTable.Timer.Timeout -= InterractionEnded;
-			cuttingTable.StopInteract();
-			_isInteracting = false;
-		}
-	}
+            if (
+                Input.IsActionJustPressed("interact")
+                && _heldItem == null
+                && _lastHighlightedTable != null
+                && _lastHighlightedTable is CuttingTable cuttingTable
+                && cuttingTable.CanCut()
+            )
+            {
+                cuttingTable.Timer.Timeout += InterractionEnded;
+                cuttingTable.StartInteract();
+                _isInteracting = true;
+            }
+        }
+        else if (
+            Input.IsActionJustReleased("interact")
+            && _lastHighlightedTable != null
+            && _lastHighlightedTable is CuttingTable cuttingTable
+        )
+        {
+            cuttingTable.Timer.Timeout -= InterractionEnded;
+            cuttingTable.StopInteract();
+            _isInteracting = false;
+        }
+    }
 }

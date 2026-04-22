@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://b6abxplrk5w03"]
+[gd_scene format=3 uid="uid://deia2bq6l0qyk"]
 
-[ext_resource type="Script" uid="uid://cpfq2lym520uc" path="res://Table.cs" id="1_v2kmo"]
-[ext_resource type="PackedScene" uid="uid://i1iplcho2x05" path="res://Blender Meshes/Kitchen_Cabin.blend" id="2_ipv7n"]
+[ext_resource type="Script" uid="uid://bppsdod44blx0" path="res://TableDeliver.cs" id="1_t1a1m"]
+[ext_resource type="PackedScene" uid="uid://cql1qtrhulkdv" path="res://Blender Meshes/Delivery_Counter.blend" id="2_v5i0k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
 transparency = 1
@@ -9,15 +9,16 @@ albedo_color = Color(1, 1, 1, 0.3372549)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jd0nb"]
 material = SubResource("StandardMaterial3D_1emcc")
-size = Vector3(1.1, 0.6, 1.1)
+size = Vector3(2.1, 0.6, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jd0nb"]
+size = Vector3(2, 0.5, 1)
 
 [node name="Node3D" type="StaticBody3D" unique_id=2072600989]
-script = ExtResource("1_v2kmo")
+script = ExtResource("1_t1a1m")
 
-[node name="Kitchen_Cabin2" parent="." unique_id=1403260955 instance=ExtResource("2_ipv7n")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0.05)
+[node name="Delivery_Counter" parent="." unique_id=1917980231 instance=ExtResource("2_v5i0k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2, -0.5, 2.25)
 
 [node name="Highlight" type="MeshInstance3D" parent="." unique_id=1361756805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -25,6 +26,7 @@ visible = false
 mesh = SubResource("BoxMesh_jd0nb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2042786382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_jd0nb")
 
 [node name="Item" type="Node3D" parent="." unique_id=84863435]

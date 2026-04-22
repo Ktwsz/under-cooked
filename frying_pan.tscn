@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://8n60iobmqo26"]
 
-[ext_resource type="PackedScene" uid="uid://jfr2aenvd7hf" path="res://KitchenChaos/Assets/Meshes/FryingPan.fbx" id="1_8iho2"]
 [ext_resource type="Script" uid="uid://fsmuig6jync2" path="res://FryingPan.cs" id="1_j71ua"]
+[ext_resource type="PackedScene" uid="uid://cdu7qt8ruafjh" path="res://Blender Meshes/Fry_Pan.blend" id="3_10015"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_j71ua"]
 viewport_path = NodePath("ProgressBar/ProgressBarViewport")
 
 [node name="FryingPan" type="Node3D" unique_id=1687112907]
 script = ExtResource("1_j71ua")
-
-[node name="FryingPan" parent="." unique_id=1414404595 instance=ExtResource("1_8iho2")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=1376277212]
 
@@ -26,3 +23,6 @@ size = Vector2i(192, 27)
 offset_right = 192.0
 offset_bottom = 27.0
 value = 50.0
+
+[node name="Fry_Pan2" parent="." unique_id=43695990 instance=ExtResource("3_10015")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)

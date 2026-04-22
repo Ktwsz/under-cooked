@@ -56,71 +56,71 @@ transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.70710677, 0, -0.70710677, 0.707
 [node name="Tables" type="Node3D" parent="." unique_id=1669487833]
 
 [node name="Table1" parent="Tables" unique_id=2072600989 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -2)
 InitPlacedItem = ExtResource("3_km5ld")
 
 [node name="Table2" parent="Tables" unique_id=716298673 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, -2)
 
 [node name="Table3" parent="Tables" unique_id=90021322 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.7, -2)
 
 [node name="Table4" parent="Tables" unique_id=300794277 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.7, -2)
 InitPlacedItem = ExtResource("4_i2t4f")
 
 [node name="Table5" parent="Tables" unique_id=55288419 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.7, -2)
 
 [node name="Table6" parent="Tables" unique_id=305472510 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.7, -2)
 
 [node name="Table7" parent="Tables" unique_id=1130574790 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.7, -1)
 InitPlacedItem = ExtResource("4_i2t4f")
 
 [node name="Table8" parent="Tables" unique_id=1779083816 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.7, 0)
 InitPlacedItem = ExtResource("5_8cye3")
 
 [node name="Table9" parent="Tables" unique_id=210906660 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.7, 1)
 InitPlacedItem = ExtResource("3_km5ld")
 
 [node name="CuttingTable" parent="Tables" unique_id=560797329 instance=ExtResource("3_oi3di")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 2)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0.7, 2)
 
 [node name="SpawningTableTomato" parent="Tables" unique_id=497865140 instance=ExtResource("4_0b4ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.7, -2)
 SpawnedFood = ExtResource("3_km5ld")
 
 [node name="SpawningTableBun" parent="Tables" unique_id=1051198055 instance=ExtResource("4_0b4ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.7, -2)
 SpawnedFood = ExtResource("6_n6hdu")
 
 [node name="SpawningTableCabbage" parent="Tables" unique_id=1126089362 instance=ExtResource("4_0b4ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.7, -2)
 SpawnedFood = ExtResource("8_km5ld")
 
 [node name="Trash" parent="Tables" unique_id=1160235291 instance=ExtResource("8_i2t4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.7, 3)
 
 [node name="FryingTable" parent="Tables" unique_id=529205047 instance=ExtResource("11_2orkt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.7, -2)
 
 [node name="Table10" parent="Tables" unique_id=982601521 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.7, 4)
 
 [node name="Table11" parent="Tables" unique_id=568256525 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.7, 4)
 InitPlacedItem = ExtResource("12_aicyk")
 
 [node name="Table12" parent="Tables" unique_id=177408200 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 4)
 InitPlacedItem = ExtResource("12_aicyk")
 
 [node name="Table13" parent="Tables" unique_id=2085314670 instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 4)
 InitPlacedItem = ExtResource("12_aicyk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2104378571]

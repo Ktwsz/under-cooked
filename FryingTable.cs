@@ -15,6 +15,9 @@ public partial class FryingTable : Table
 
     public override Node3D PickupItem()
     {
+        if (PlacedItem == null)
+            return null;
+
         (PlacedItem as FryingPan).StopFrying();
         return base.PickupItem();
     }

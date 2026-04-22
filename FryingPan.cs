@@ -77,10 +77,9 @@ public partial class FryingPan : Node3D
         if (Item == null || (Item as Node3D).GetName() == "CookedMeat")
             return;
 
+        _timer.SetPaused(false);
         if (_timer.IsStopped())
             _timer.Start();
-        else
-            _timer.SetPaused(false);
 
         GetNode<Sprite3D>("ProgressBar").SetVisible(true);
     }

@@ -44,6 +44,9 @@ public partial class CuttingTable : Table
         AddItemToScene();
     }
 
+    public bool CanCut() =>
+        PlacedItem != null && FoodConstants.CuttableFood.ContainsKey(PlacedItem.GetName());
+
     public void StartInteract()
     {
         if (_timer.IsStopped())
