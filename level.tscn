@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://di11gcsngqg8d" path="res://uncooked_meat.tscn" id="4_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://8n60iobmqo26" path="res://frying_pan.tscn" id="5_8cye3"]
 [ext_resource type="PackedScene" uid="uid://bp1xam4fqrmn1" path="res://bun.tscn" id="6_n6hdu"]
-[ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table_deliver.tscn" id="7_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://b6abxplrk5w03" path="res://table.tscn" id="7_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://7h5jbikmy1d4" path="res://trash.tscn" id="8_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://wkx8jbe18pc" path="res://cabbage.tscn" id="8_km5ld"]
 [ext_resource type="PackedScene" uid="uid://cwvi3fgrdvq3q" path="res://frying_table.tscn" id="11_2orkt"]
