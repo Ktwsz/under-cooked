@@ -12,7 +12,7 @@ var levels = [
 	{
 		"id": "level_1",
 		"name": "Level 1",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-1.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 1200
 	},

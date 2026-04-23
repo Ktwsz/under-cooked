@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cr5f0r045pv5p" path="res://plate.tscn" id="12_w4unl"]
 [ext_resource type="PackedScene" uid="uid://cr4g6cdg2hy1b" path="res://Blender Meshes/Wall.blend" id="14_ef43t"]
 [ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table_deliver.tscn" id="14_mgwar"]
+[ext_resource type="PackedScene" uid="uid://b2164e2o235sj" path="res://LevelUI/level_ui.tscn" id="17_enfoe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
@@ -241,3 +242,5 @@ visible = false
 [node name="Wall3" parent="." unique_id=1047825900 instance=ExtResource("14_ef43t")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.617815, -1.3040771, 0.40453982)
 visible = false
+
+[node name="LevelUI" parent="." unique_id=303331810 instance=ExtResource("17_enfoe")]

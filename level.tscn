@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://c8o4kx4d8s3cr"]
 
-[ext_resource type="Script" uid="uid://c8b6w31rtq3p1" path="res://level.gd" id="1_fedht"]
 [ext_resource type="PackedScene" uid="uid://cj8il8880trii" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://j3t43a68i4pv" path="res://tomato.tscn" id="3_km5ld"]
 [ext_resource type="PackedScene" uid="uid://clmuyc0jjvrh0" path="res://cutting_table.tscn" id="3_oi3di"]
@@ -8,15 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://di11gcsngqg8d" path="res://uncooked_meat.tscn" id="4_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://8n60iobmqo26" path="res://frying_pan.tscn" id="5_8cye3"]
 [ext_resource type="PackedScene" uid="uid://bp1xam4fqrmn1" path="res://bun.tscn" id="6_n6hdu"]
-[ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table.tscn" id="7_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table_deliver.tscn" id="7_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://7h5jbikmy1d4" path="res://trash.tscn" id="8_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://wkx8jbe18pc" path="res://cabbage.tscn" id="8_km5ld"]
 [ext_resource type="PackedScene" uid="uid://cwvi3fgrdvq3q" path="res://frying_table.tscn" id="11_2orkt"]
 [ext_resource type="PackedScene" uid="uid://cr5f0r045pv5p" path="res://plate.tscn" id="12_aicyk"]
-[ext_resource type="PackedScene" uid="uid://kssyutc2s03q" path="res://LevelUI/timer.tscn" id="13_h6smj"]
-[ext_resource type="PackedScene" uid="uid://ddptrj4b0b1m" path="res://LevelUI/orders.tscn" id="13_v5j5c"]
-[ext_resource type="PackedScene" uid="uid://cvwhgoex66lbt" path="res://LevelUI/score.tscn" id="15_v5j5c"]
-[ext_resource type="PackedScene" uid="uid://6de84kvbfh45" path="res://LevelUI/pause_menu.tscn" id="16_5pxul"]
+[ext_resource type="PackedScene" uid="uid://b2164e2o235sj" path="res://LevelUI/level_ui.tscn" id="14_h6smj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
@@ -29,7 +25,6 @@ material = SubResource("StandardMaterial3D_n6hdu")
 size = Vector3(60, 2, 60)
 
 [node name="Level" type="Node3D" unique_id=1376760468]
-script = ExtResource("1_fedht")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=149585644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -123,30 +118,4 @@ InitPlacedItem = ExtResource("12_aicyk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 4)
 InitPlacedItem = ExtResource("12_aicyk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2104378571]
-
-[node name="Orders" parent="CanvasLayer" unique_id=1672745282 instance=ExtResource("13_v5j5c")]
-
-[node name="Timer" parent="CanvasLayer" unique_id=1341699542 instance=ExtResource("13_h6smj")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -225.0
-offset_top = -100.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Score" parent="CanvasLayer" unique_id=784578256 instance=ExtResource("15_v5j5c")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -100.0
-offset_bottom = 0.0
-grow_vertical = 0
-
-[node name="PauseMenu" parent="CanvasLayer" unique_id=941859224 instance=ExtResource("16_5pxul")]
-visible = false
+[node name="LevelUI" parent="." unique_id=303331810 instance=ExtResource("14_h6smj")]

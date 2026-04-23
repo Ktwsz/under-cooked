@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b2164e2o235sj"]
+
+[ext_resource type="Script" uid="uid://cjetxogd63ovv" path="res://LevelUI/level_ui.gd" id="1_0ufh4"]
+[ext_resource type="PackedScene" uid="uid://ddptrj4b0b1m" path="res://LevelUI/orders.tscn" id="1_po8xf"]
+[ext_resource type="PackedScene" uid="uid://kssyutc2s03q" path="res://LevelUI/timer.tscn" id="2_0ufh4"]
+[ext_resource type="PackedScene" uid="uid://cvwhgoex66lbt" path="res://LevelUI/score.tscn" id="3_8oqep"]
+[ext_resource type="PackedScene" uid="uid://6de84kvbfh45" path="res://LevelUI/pause_menu.tscn" id="4_bniio"]
+
+[node name="LevelUI" type="CanvasLayer" unique_id=303331810]
+script = ExtResource("1_0ufh4")
+
+[node name="Orders" parent="." unique_id=1139651646 instance=ExtResource("1_po8xf")]
+
+[node name="Timer" parent="." unique_id=1341699542 instance=ExtResource("2_0ufh4")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -100.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Score" parent="." unique_id=1052495956 instance=ExtResource("3_8oqep")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="PauseMenu" parent="." unique_id=941859224 instance=ExtResource("4_bniio")]
+visible = false
