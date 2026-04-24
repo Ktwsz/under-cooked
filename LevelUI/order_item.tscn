@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bq2pa38q5scab"]
+
+[ext_resource type="Texture2D" uid="uid://chj0i1xhol2b7" path="res://icon.svg" id="1_1dce4"]
+[ext_resource type="Script" uid="uid://bpk5yq63xkl4y" path="res://order_item.gd" id="1_sibs5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8tir"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="OrderItem" type="PanelContainer" unique_id=1265458915]
+theme_override_styles/panel = SubResource("StyleBoxFlat_f8tir")
+script = ExtResource("1_sibs5")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1770529332]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=571376387]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="OrderIcon" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1628988805]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_1dce4")
+expand_mode = 2
+
+[node name="TimeProgessBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=2020400261]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+show_percentage = false
+
+[node name="Ingredients" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1019263902]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Timer" type="Timer" parent="." unique_id=1829209580]
+one_shot = true

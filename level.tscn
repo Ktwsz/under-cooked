@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://wkx8jbe18pc" path="res://cabbage.tscn" id="8_km5ld"]
 [ext_resource type="PackedScene" uid="uid://cwvi3fgrdvq3q" path="res://frying_table.tscn" id="11_2orkt"]
 [ext_resource type="PackedScene" uid="uid://cr5f0r045pv5p" path="res://plate.tscn" id="12_aicyk"]
+[ext_resource type="PackedScene" uid="uid://b2164e2o235sj" path="res://LevelUI/level_ui.tscn" id="14_h6smj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
@@ -116,3 +117,5 @@ InitPlacedItem = ExtResource("12_aicyk")
 [node name="Table13" parent="Tables" unique_id=2085314670 instance=ExtResource("7_n6hdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 4)
 InitPlacedItem = ExtResource("12_aicyk")
+
+[node name="LevelUI" parent="." unique_id=303331810 instance=ExtResource("14_h6smj")]

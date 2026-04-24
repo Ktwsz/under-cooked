@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b2e6ndyrw7ai7"]
+
+[ext_resource type="Texture2D" uid="uid://cwh1dvm7lgdvq" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png" id="1_e3dar"]
+
+[node name="TextureRect" type="TextureRect" unique_id=1112640806]
+custom_minimum_size = Vector2(25, 25)
+texture = ExtResource("1_e3dar")
+expand_mode = 3
