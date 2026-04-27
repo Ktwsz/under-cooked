@@ -43,6 +43,8 @@ wait_time = 2.0
 [node name="CuttingProgressBar" type="Sprite3D" parent="." unique_id=356154641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 visible = false
+billboard = 1
+no_depth_test = true
 texture = SubResource("ViewportTexture_6ojdj")
 
 [node name="ProgressBarViewport" type="SubViewport" parent="CuttingProgressBar" unique_id=1596064108]
