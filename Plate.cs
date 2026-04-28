@@ -39,23 +39,7 @@ public partial class Plate : Node3D
         if (!(IsAllowedIngredient(tmp.GetName())))
             return;
 
-        if (tmp.GetParent() == null)
-        {
-            GetNode<Node3D>("Items").AddChild(tmp); // TODO: separate function, set appropriate position? also can be merged perhaps with frying pan Add()
-        }
-        else
-        {
-            if (tmp.GetNode("../..") is Player player)
-                player.HeldItem = null;
-
-            if (tmp.GetNode("../..") is Table table)
-                table.PlacedItem = null;
-
-            if (tmp.GetParent() is FryingPan)
-                (tmp.GetParent() as FryingPan).Item = null;
-
-            tmp.Reparent(GetNode<Node3D>("Items"), false); // TODO: separate function, set appropriate position?
-        }
+        Reparent(tmp);
 
         if (tmp is Bun)
         {
@@ -74,5 +58,25 @@ public partial class Plate : Node3D
             tmp.SetPosition(new Vector3(0, _currentPos, 0));
             _currentPos += ExtractSize(tmp.GetChildren()[0] as Node3D);
         }
+    }
+
+    private void Reparent(Node3D tmp)
+    {
+        if (tmp.GetParent() == null)
+        {
+            GetNode<Node3D>("Items").AddChild(tmp);
+            return;
+        }
+
+        if (tmp.GetNode("../..") is Player player)
+            player.HeldItem = null;
+
+        if (tmp.GetNode("../..") is Table table)
+            table.PlacedItem = null;
+
+        if (tmp.GetParent() is FryingPan)
+            (tmp.GetParent() as FryingPan).Item = null;
+
+        tmp.Reparent(GetNode<Node3D>("Items"), false);
     }
 }

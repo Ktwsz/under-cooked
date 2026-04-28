@@ -55,10 +55,10 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2, 1, 7)
 Speed = 9
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=1769382657]
-transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.8660253, 0, -0.8660253, 0.49999994, 2, 7, 7)
+transform = Transform3D(1, 0, 0, 0, 0.4999999, 0.8660253, 0, -0.8660253, 0.4999999, 2, 7, 7)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1959642988]
-transform = Transform3D(0.99710083, -0.053805552, 0.053805508, 0.05384593, 0.99854916, 0.00070008636, -0.053765118, 0.0021991432, 0.9985513, 0.11959076, -4.370611, 2.4632587)
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.11959076, -4.370611, 2.4632587)
 
 [node name="Tables" type="Node3D" parent="." unique_id=1669487833]
 

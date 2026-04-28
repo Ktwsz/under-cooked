@@ -35,54 +35,42 @@ public partial class Table : StaticBody3D
 
     public virtual void TryPlaceItem(Node3D item)
     {
-        if (PlacedItem != null)
+        if (PlacedItem == null)
         {
-            if (item is FryingPan)
-            {
-                if (PlacedItem is Bun)
-                {
-                    (PlacedItem as Bun).Add(item);
-                    return;
-                }
-                if (PlacedItem is Plate)
-                {
-                    (PlacedItem as Plate).Add(item);
-                    return;
-                }
-                (item as FryingPan).Add(PlacedItem);
-                return;
-            }
-            if (item is Bun)
-            {
-                (item as Bun).Add(PlacedItem);
-                return;
-            }
-            if (item is Plate)
-            {
-                (item as Plate).Add(PlacedItem);
-                return;
-            }
-            if (PlacedItem is FryingPan)
-            {
-                (PlacedItem as FryingPan).Add(item);
-                return;
-            }
-            if (PlacedItem is Bun)
-            {
-                (PlacedItem as Bun).Add(item);
-                return;
-            }
-            if (PlacedItem is Plate)
-            {
-                (PlacedItem as Plate).Add(item);
-                return;
-            }
-
+            PlacedItem = item;
+            AddItemToScene();
             return;
         }
 
-        PlacedItem = item;
-        AddItemToScene();
+        if (item is FryingPan fryingPan)
+        {
+            if (PlacedItem is Bun placedBun)
+                placedBun.Add(item);
+            else if (PlacedItem is Plate placedPlate)
+                placedPlate.Add(item);
+            else
+                fryingPan.Add(PlacedItem);
+        }
+        else if (item is Bun bun)
+        {
+            if (PlacedItem is Plate placedPlate)
+                placedPlate.Add(item);
+            else
+                bun.Add(PlacedItem);
+        }
+        else if (item is Plate plate)
+        {
+            plate.Add(PlacedItem);
+        }
+        else
+        {
+            if (PlacedItem is FryingPan placedFryingPan)
+                placedFryingPan.Add(item);
+            else if (PlacedItem is Bun placedBun)
+                placedBun.Add(item);
+            else if (PlacedItem is Plate placedPlate)
+                placedPlate.Add(item);
+        }
     }
 
     public virtual Node3D PickupItem()

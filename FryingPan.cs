@@ -52,23 +52,7 @@ public partial class FryingPan : Node3D
         }
 
         Item = tmp;
-        if (tmp.GetParent() == null)
-        {
-            AddChild(tmp); // TODO: separate function, set appropriate position?
-        }
-        else
-        {
-            if (tmp.GetNode("../..") is Player player)
-                player.HeldItem = null;
-
-            if (tmp.GetNode("../..") is Table table)
-                table.PlacedItem = null;
-
-            if (tmp.GetParent() is FryingPan)
-                (tmp.GetParent() as FryingPan).Item = null;
-
-            tmp.Reparent(this, false); // TODO: separate function, set appropriate position?
-        }
+        Reparent(tmp);
         Item.SetPosition(new Vector3(0, 0.1f, 0));
     }
 
@@ -85,4 +69,24 @@ public partial class FryingPan : Node3D
     }
 
     public void StopFrying() => _timer.SetPaused(true);
+
+    private void Reparent(Node3D tmp)
+    {
+        if (tmp.GetParent() == null)
+        {
+            AddChild(tmp);
+            return;
+        }
+
+        if (tmp.GetNode("../..") is Player player)
+            player.HeldItem = null;
+
+        if (tmp.GetNode("../..") is Table table)
+            table.PlacedItem = null;
+
+        if (tmp.GetParent() is FryingPan)
+            (tmp.GetParent() as FryingPan).Item = null;
+
+        tmp.Reparent(this, false);
+    }
 }
