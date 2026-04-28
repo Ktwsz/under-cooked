@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
@@ -28,11 +29,13 @@ public partial class Plate : Node3D
         if (_bun != null)
         {
             _bun.Add(tmp);
+            UpdateShownIngredients();
             return;
         }
         if (tmp is FryingPan fryingPan)
         {
             Add(fryingPan.Item);
+            UpdateShownIngredients();
             return;
         }
 
@@ -58,6 +61,8 @@ public partial class Plate : Node3D
             tmp.SetPosition(new Vector3(0, _currentPos, 0));
             _currentPos += ExtractSize(tmp.GetChildren()[0] as Node3D);
         }
+
+        UpdateShownIngredients();
     }
 
     private void Reparent(Node3D tmp)
@@ -79,4 +84,37 @@ public partial class Plate : Node3D
 
         tmp.Reparent(GetNode<Node3D>("Items"), false);
     }
+
+    private void UpdateShownIngredients()
+    {
+        IEnumerable<string> children;
+        if (_bun != null)
+        {
+            GetNode<TextureRect>("Sprite3D/SubViewport/HBoxContainer/BunRect").SetVisible(true);
+            children = _bun.GetChildren()
+                .Select(c => c.GetName().ToString())
+                .Where(name => !name.StartsWith("Bread"));
+        }
+        else
+        {
+            children = GetNode<Node3D>("Items").GetChildren().Select(c => c.GetName().ToString());
+        }
+
+        foreach (var nodeName in children)
+        {
+            GetNode<TextureRect>(
+                    $"Sprite3D/SubViewport/HBoxContainer/{IngredientToRectName(nodeName)}"
+                )
+                .SetVisible(true);
+        }
+    }
+
+    private string IngredientToRectName(string nodeName) =>
+        nodeName switch
+        {
+            "CookedMeat" => "MeatRect",
+            "TomatoSliced" => "TomatoRect",
+            "CabbageSliced" => "CabbageRect",
+            _ => "",
+        };
 }

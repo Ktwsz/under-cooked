@@ -2,6 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://cqp7eiapw6e84" path="res://KitchenChaos/Assets/Meshes/Plate.fbx" id="1_s5yhh"]
 [ext_resource type="Script" uid="uid://dvbvk8y2brpbn" path="res://Plate.cs" id="1_uw33f"]
+[ext_resource type="Texture2D" uid="uid://cwh1dvm7lgdvq" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png" id="3_g4jty"]
+[ext_resource type="Texture2D" uid="uid://bi4kwdgucyltj" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png" id="3_jcf13"]
+[ext_resource type="Texture2D" uid="uid://cjwblilue3xs0" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/CabbageSlices.png" id="5_ffgcv"]
+[ext_resource type="Texture2D" uid="uid://dtqf7okbe8qko" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png" id="6_072o2"]
+[ext_resource type="Texture2D" uid="uid://smrbsln8dgt7" path="res://circle.png" id="7_nq5sa"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g4jty"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="Plate" type="Node3D" unique_id=1568667832]
 script = ExtResource("1_uw33f")
@@ -10,3 +18,71 @@ script = ExtResource("1_uw33f")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Items" type="Node3D" parent="." unique_id=1492950510]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=33579851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4958911)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_g4jty")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=2129861171]
+transparent_bg = true
+size = Vector2i(208, 49)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite3D/SubViewport" unique_id=1187042201]
+offset_right = 208.0
+offset_bottom = 49.0
+alignment = 1
+
+[node name="BunRect" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer" unique_id=695274848]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_nq5sa")
+expand_mode = 3
+
+[node name="Bun" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer/BunRect" unique_id=285180627]
+z_index = 1
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("3_jcf13")
+expand_mode = 1
+
+[node name="MeatRect" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer" unique_id=2022057513]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_nq5sa")
+expand_mode = 3
+
+[node name="Meat" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer/MeatRect" unique_id=397891973]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("6_072o2")
+expand_mode = 1
+
+[node name="TomatoRect" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer" unique_id=1400381576]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_nq5sa")
+expand_mode = 3
+
+[node name="Tomato" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer/TomatoRect" unique_id=1245372408]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("3_g4jty")
+expand_mode = 1
+
+[node name="CabbageRect" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer" unique_id=2036112690]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_nq5sa")
+expand_mode = 3
+
+[node name="Cabbage" type="TextureRect" parent="Sprite3D/SubViewport/HBoxContainer/CabbageRect" unique_id=1889176902]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("5_ffgcv")
+expand_mode = 1

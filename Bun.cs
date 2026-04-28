@@ -5,6 +5,7 @@ using Godot;
 public partial class Bun : Node3D
 {
     private float _currentPos;
+    private Vector3 _itemOffset = new Vector3(0.25f, 0, 0);
 
     private bool IsAllowedIngredient(string name) =>
         (name == "CookedMeat" || name == "TomatoSliced" || name == "CabbageSliced")
@@ -34,7 +35,8 @@ public partial class Bun : Node3D
 
         Reparent(tmp);
 
-        tmp.SetPosition(new Vector3(0, _currentPos, 0));
+        tmp.SetPosition(new Vector3(_itemOffset.X, _currentPos, _itemOffset.Z));
+        _itemOffset = _itemOffset.Rotated(new Vector3(0, 1, 0), (float)Math.PI / 2);
         _currentPos += ExtractSize(tmp.GetChildren()[0] as Node3D);
         GetNode<Node3D>("BreadTop").SetPosition(new Vector3(0, _currentPos, 0));
     }
