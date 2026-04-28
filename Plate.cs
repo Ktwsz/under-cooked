@@ -35,7 +35,6 @@ public partial class Plate : Node3D
         if (tmp is FryingPan fryingPan)
         {
             Add(fryingPan.Item);
-            UpdateShownIngredients();
             return;
         }
 
@@ -43,10 +42,12 @@ public partial class Plate : Node3D
             return;
 
         Reparent(tmp);
+        HideItemIndicator(tmp);
 
         if (tmp is Bun)
         {
             _bun = tmp as Bun;
+            _bun.HideRecipeIndicator();
             foreach (var child in GetNode<Node3D>("Items").GetChildren())
             {
                 if (child is Bun)
@@ -90,10 +91,12 @@ public partial class Plate : Node3D
         IEnumerable<string> children;
         if (_bun != null)
         {
-            GetNode<TextureRect>("Sprite3D/SubViewport/HBoxContainer/BunRect").SetVisible(true);
+            GetNode<TextureRect>("Indicator/SubViewport/HBoxContainer/BunRect").SetVisible(true);
             children = _bun.GetChildren()
                 .Select(c => c.GetName().ToString())
-                .Where(name => !name.StartsWith("Bread"));
+                .Where(name =>
+                    !name.StartsWith("Bread") && name != "Indicator" && name != "RecipeIndicator"
+                ); // TODO: add node "Items" for Bun
         }
         else
         {
@@ -103,7 +106,7 @@ public partial class Plate : Node3D
         foreach (var nodeName in children)
         {
             GetNode<TextureRect>(
-                    $"Sprite3D/SubViewport/HBoxContainer/{IngredientToRectName(nodeName)}"
+                    $"Indicator/SubViewport/HBoxContainer/{IngredientToRectName(nodeName)}"
                 )
                 .SetVisible(true);
         }
@@ -117,4 +120,9 @@ public partial class Plate : Node3D
             "CabbageSliced" => "CabbageRect",
             _ => "",
         };
+
+    private void HideItemIndicator(Node3D item)
+    {
+        item.GetNode<Sprite3D>("Indicator").SetVisible(false);
+    }
 }

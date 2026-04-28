@@ -1,8 +1,40 @@
 [gd_scene format=3 uid="uid://wkx8jbe18pc"]
 
 [ext_resource type="PackedScene" uid="uid://btloqsqcvqgkv" path="res://KitchenChaos/Assets/Meshes/Cabbage.fbx" id="1_iuhr8"]
+[ext_resource type="Texture2D" uid="uid://smrbsln8dgt7" path="res://circle.png" id="2_s1xj6"]
+[ext_resource type="Texture2D" uid="uid://xox8lmkxrx0" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Cabbage.png" id="3_u5qim"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hh4f7"]
+viewport_path = NodePath("Indicator/SubViewport")
 
 [node name="Cabbage" type="Node3D" unique_id=1702499071]
 
 [node name="Cabbage" parent="." unique_id=1979097073 instance=ExtResource("1_iuhr8")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="Indicator" type="Sprite3D" parent="." unique_id=548499470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85276896, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_hh4f7")
+
+[node name="SubViewport" type="SubViewport" parent="Indicator" unique_id=1571507260]
+transparent_bg = true
+size = Vector2i(49, 49)
+
+[node name="MarginContainer" type="MarginContainer" parent="Indicator/SubViewport" unique_id=903982314]
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="CabbageRect" type="TextureRect" parent="Indicator/SubViewport/MarginContainer" unique_id=1769440244]
+layout_mode = 2
+texture = ExtResource("2_s1xj6")
+expand_mode = 3
+
+[node name="Cabbage" type="TextureRect" parent="Indicator/SubViewport/MarginContainer/CabbageRect" unique_id=544468366]
+z_index = 1
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("3_u5qim")
+expand_mode = 1

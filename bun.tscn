@@ -3,6 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://c7xfwt460y6ia" path="res://KitchenChaos/Assets/Meshes/BreadBottom.fbx" id="1_3pnhr"]
 [ext_resource type="Script" uid="uid://dt0g72kuqmd36" path="res://Bun.cs" id="1_y01k6"]
 [ext_resource type="PackedScene" uid="uid://10opyx57ce2i" path="res://KitchenChaos/Assets/Meshes/BreadTop.fbx" id="2_y01k6"]
+[ext_resource type="Texture2D" uid="uid://smrbsln8dgt7" path="res://circle.png" id="4_v0i74"]
+[ext_resource type="Texture2D" uid="uid://dtqf7okbe8qko" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png" id="5_37faa"]
+[ext_resource type="Texture2D" uid="uid://cjwblilue3xs0" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/CabbageSlices.png" id="7_tg57h"]
+[ext_resource type="Texture2D" uid="uid://dr1r824yp8bpn" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/TomatoSlice.png" id="7_v0i74"]
+[ext_resource type="Texture2D" uid="uid://bi4kwdgucyltj" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png" id="8_r6083"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tiwpf"]
+viewport_path = NodePath("Indicator/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v0i74"]
+viewport_path = NodePath("RecipeIndicator/SubViewport")
 
 [node name="Bun" type="Node3D" unique_id=588018866]
 script = ExtResource("1_y01k6")
@@ -12,3 +23,98 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.1, 0)
 
 [node name="BreadTop" parent="." unique_id=780623861 instance=ExtResource("2_y01k6")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.116, 0.319, 0)
+
+[node name="Indicator" type="Sprite3D" parent="." unique_id=1465752693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83852714, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_tiwpf")
+
+[node name="SubViewport" type="SubViewport" parent="Indicator" unique_id=1451682321]
+transparent_bg = true
+size = Vector2i(49, 49)
+
+[node name="MarginContainer" type="MarginContainer" parent="Indicator/SubViewport" unique_id=871362008]
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="BunRect" type="TextureRect" parent="Indicator/SubViewport/MarginContainer" unique_id=1693401064]
+layout_mode = 2
+texture = ExtResource("4_v0i74")
+expand_mode = 3
+
+[node name="Bun" type="TextureRect" parent="Indicator/SubViewport/MarginContainer/BunRect" unique_id=2131808281]
+z_index = 1
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("8_r6083")
+expand_mode = 1
+
+[node name="RecipeIndicator" type="Sprite3D" parent="." unique_id=1137136175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35855073, 0.00707525)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_v0i74")
+
+[node name="SubViewport" type="SubViewport" parent="RecipeIndicator" unique_id=448984545]
+transparent_bg = true
+size = Vector2i(208, 49)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RecipeIndicator/SubViewport" unique_id=1786511519]
+offset_right = 208.0
+offset_bottom = 49.0
+alignment = 1
+
+[node name="BunRect" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer" unique_id=1508839053]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_v0i74")
+expand_mode = 3
+
+[node name="Bun" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer/BunRect" unique_id=1523178667]
+z_index = 1
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("8_r6083")
+expand_mode = 1
+
+[node name="MeatRect" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer" unique_id=1954419990]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_v0i74")
+expand_mode = 3
+
+[node name="Meat" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer/MeatRect" unique_id=1255936412]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("5_37faa")
+expand_mode = 1
+
+[node name="TomatoRect" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer" unique_id=214393635]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_v0i74")
+expand_mode = 3
+
+[node name="Tomato" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer/TomatoRect" unique_id=974727160]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("7_v0i74")
+expand_mode = 1
+
+[node name="CabbageRect" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer" unique_id=168127778]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_v0i74")
+expand_mode = 3
+
+[node name="Cabbage" type="TextureRect" parent="RecipeIndicator/SubViewport/HBoxContainer/CabbageRect" unique_id=1771236867]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("7_tg57h")
+expand_mode = 1

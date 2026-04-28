@@ -1,8 +1,40 @@
 [gd_scene format=3 uid="uid://di11gcsngqg8d"]
 
 [ext_resource type="PackedScene" uid="uid://doal7ynwwo4yj" path="res://KitchenChaos/Assets/Meshes/MeatUncooked.fbx" id="1_6mt2h"]
+[ext_resource type="Texture2D" uid="uid://smrbsln8dgt7" path="res://circle.png" id="2_qsig0"]
+[ext_resource type="Texture2D" uid="uid://csisdqanaqlti" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyUncooked.png" id="2_s0ese"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kfe50"]
+viewport_path = NodePath("Indicator/SubViewport")
 
 [node name="UncookedMeat" type="Node3D" unique_id=1933666795]
 
 [node name="MeatUncooked" parent="." unique_id=437502502 instance=ExtResource("1_6mt2h")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Indicator" type="Sprite3D" parent="." unique_id=366319258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4241283, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_kfe50")
+
+[node name="SubViewport" type="SubViewport" parent="Indicator" unique_id=202176508]
+transparent_bg = true
+size = Vector2i(49, 49)
+
+[node name="MarginContainer" type="MarginContainer" parent="Indicator/SubViewport" unique_id=1828439171]
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="MeatRect" type="TextureRect" parent="Indicator/SubViewport/MarginContainer" unique_id=1388713558]
+layout_mode = 2
+texture = ExtResource("2_qsig0")
+expand_mode = 3
+
+[node name="Meat" type="TextureRect" parent="Indicator/SubViewport/MarginContainer/MeatRect" unique_id=50463034]
+z_index = 1
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("2_s0ese")
+expand_mode = 1

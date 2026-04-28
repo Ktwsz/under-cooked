@@ -34,6 +34,12 @@ public partial class Bun : Node3D
             return;
 
         Reparent(tmp);
+        HideItemIndicator(tmp);
+        if (GetNode<Sprite3D>("RecipeIndicator").IsVisible())
+        {
+            ShowRecipeIndicator();
+            ShowRecipeItemIndicator(tmp.GetName().ToString());
+        }
 
         tmp.SetPosition(new Vector3(_itemOffset.X, _currentPos, _itemOffset.Z));
         _itemOffset = _itemOffset.Rotated(new Vector3(0, 1, 0), (float)Math.PI / 2);
@@ -59,5 +65,38 @@ public partial class Bun : Node3D
             (tmp.GetParent() as FryingPan).Item = null;
 
         tmp.Reparent(this, false);
+    }
+
+    private void HideItemIndicator(Node3D item)
+    {
+        item.GetNode<Sprite3D>("Indicator").SetVisible(false);
+    }
+
+    private void ShowRecipeIndicator()
+    {
+        GetNode<Node3D>("Indicator").SetVisible(false);
+        GetNode<TextureRect>("RecipeIndicator/SubViewport/HBoxContainer/BunRect").SetVisible(true);
+    }
+
+    private void ShowRecipeItemIndicator(string nodeName)
+    {
+        GetNode<TextureRect>(
+                $"RecipeIndicator/SubViewport/HBoxContainer/{IngredientToRectName(nodeName)}"
+            )
+            .SetVisible(true);
+    }
+
+    private string IngredientToRectName(string nodeName) =>
+        nodeName switch
+        {
+            "CookedMeat" => "MeatRect",
+            "TomatoSliced" => "TomatoRect",
+            "CabbageSliced" => "CabbageRect",
+            _ => "",
+        };
+
+    public void HideRecipeIndicator()
+    {
+        GetNode<Sprite3D>("RecipeIndicator").SetVisible(false);
     }
 }

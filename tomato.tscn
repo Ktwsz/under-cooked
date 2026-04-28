@@ -1,8 +1,40 @@
 [gd_scene format=3 uid="uid://j3t43a68i4pv"]
 
 [ext_resource type="PackedScene" uid="uid://squ75dg88pcp" path="res://KitchenChaos/Assets/Meshes/Tomato.fbx" id="1_ajaoc"]
+[ext_resource type="Texture2D" uid="uid://smrbsln8dgt7" path="res://circle.png" id="2_bka0x"]
+[ext_resource type="Texture2D" uid="uid://cwh1dvm7lgdvq" path="res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png" id="3_kg4fp"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7xo0b"]
+viewport_path = NodePath("Indicator/SubViewport")
 
 [node name="Tomato" type="Node3D" unique_id=99160782]
 
 [node name="Tomato" parent="." unique_id=536503126 instance=ExtResource("1_ajaoc")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="Indicator" type="Sprite3D" parent="." unique_id=278466869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83852714, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_7xo0b")
+
+[node name="SubViewport" type="SubViewport" parent="Indicator" unique_id=1552614624]
+transparent_bg = true
+size = Vector2i(49, 49)
+
+[node name="MarginContainer" type="MarginContainer" parent="Indicator/SubViewport" unique_id=1607061834]
+offset_right = 49.0
+offset_bottom = 49.0
+
+[node name="TomatoRect" type="TextureRect" parent="Indicator/SubViewport/MarginContainer" unique_id=841563738]
+layout_mode = 2
+texture = ExtResource("2_bka0x")
+expand_mode = 3
+
+[node name="Tomato" type="TextureRect" parent="Indicator/SubViewport/MarginContainer/TomatoRect" unique_id=334591356]
+z_index = 1
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 49.0
+texture = ExtResource("3_kg4fp")
+expand_mode = 1
