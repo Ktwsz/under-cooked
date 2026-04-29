@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bq2pa38q5scab"]
 
 [ext_resource type="Texture2D" uid="uid://chj0i1xhol2b7" path="res://icon.svg" id="1_1dce4"]
-[ext_resource type="Script" uid="uid://bpk5yq63xkl4y" path="res://order_item.gd" id="1_sibs5"]
+[ext_resource type="Script" uid="uid://bpk5yq63xkl4y" path="res://LevelUI/order_item.gd" id="1_sibs5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8tir"]
 bg_color = Color(1, 1, 1, 1)
@@ -41,6 +41,7 @@ show_percentage = false
 [node name="Ingredients" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1019263902]
 layout_mode = 2
 theme_override_constants/separation = 5
+alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1829209580]
 one_shot = true
