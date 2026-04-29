@@ -48,7 +48,7 @@ transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1, 1.2, 8.03)
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 6, 1.2, 8)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=838374962]
-transform = Transform3D(-0.8623724, 0.48737243, 0.13704702, 0.079459205, -0.1370469, 0.9873724, 0.50000006, 0.8623725, 0.0794593, 0, 19, -12)
+transform = Transform3D(-0.8623724, 0.48737243, 0.13704702, 0.079459205, -0.1370469, 0.9873724, 0.50000006, 0.8623725, 0.0794593, 2, 19, 8)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=281990778 instance=ExtResource("1_18dhb")]
