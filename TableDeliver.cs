@@ -13,7 +13,6 @@ public partial class TableDeliver : Table
 		var orders = (Godot.Collections.Array<PanelContainer>)
 			GetNode<MarginContainer>("../../LevelUI/Orders").Get("order_items");
 
-		GD.Print(orders);
 		var orderIx = OrderExists(item as Plate, orders);
 
 		if (orderIx == -1)
