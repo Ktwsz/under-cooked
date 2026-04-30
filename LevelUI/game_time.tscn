@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://kssyutc2s03q"]
 
-[ext_resource type="StyleBox" uid="uid://df10ibrxbgovb" path="res://UI-element.tres" id="1_o6fnk"]
-[ext_resource type="Script" uid="uid://bw78ihrnysunf" path="res://timer.gd" id="2_mxtnu"]
+[ext_resource type="StyleBox" uid="uid://df10ibrxbgovb" path="res://LevelUI/UI-element.tres" id="1_o6fnk"]
+[ext_resource type="Script" uid="uid://bw78ihrnysunf" path="res://LevelUI/game_time.gd" id="2_mxtnu"]
 [ext_resource type="FontFile" uid="uid://dyaej2iboqul2" path="res://KitchenChaos/Assets/Fonts/Nunito-Bold.ttf" id="3_kurt1"]
 
-[node name="Timer" type="Panel" unique_id=1341699542]
-offset_right = 225.0
-offset_bottom = 100.0
+[node name="GameTime" type="Panel" unique_id=1341699542]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = ExtResource("1_o6fnk")
 script = ExtResource("2_mxtnu")
-
-[node name="Timer" type="Timer" parent="." unique_id=105801674]
-wait_time = 60.0
-one_shot = true
-autostart = true
 
 [node name="Label" type="Label" parent="." unique_id=278229625]
 layout_mode = 0
@@ -35,5 +37,3 @@ offset_right = 214.0
 offset_bottom = 96.0
 value = 60.0
 show_percentage = false
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

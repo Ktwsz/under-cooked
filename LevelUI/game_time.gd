@@ -1,15 +1,20 @@
 extends Panel
 
 @onready var label = $Label
-@onready var timer = $Timer
 @onready var progress_bar = $ProgressBar
 
-var initial_time = 60
+var initial_time: float
+var timer: Timer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.start(initial_time)
+	pass
+
+
+func set_timer(_timer: Timer, _initial_time: float) -> void:
+	initial_time = _initial_time
+	timer = _timer
 
 
 func format_time(t) -> String:
@@ -20,6 +25,9 @@ func format_time(t) -> String:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if timer == null:
+		return
+	
 	label.text = format_time(timer.time_left)
 	progress_bar.value = 100 * timer.time_left / initial_time
 
