@@ -3,14 +3,14 @@ using Godot;
 
 public partial class SpawningTable : Table
 {
-    [Export]
-    public PackedScene SpawnedFood;
+	[Export]
+	public PackedScene SpawnedFood;
 
-    public override Node3D PickupItem()
-    {
-        if (PlacedItem != null)
-            return base.PickupItem();
+	public override Node3D PickupItem()
+	{
+		if (PlacedItem != null)
+			return base.PickupItem();
 
-        return SpawnedFood.Instantiate() as Node3D;
-    }
+		return SpawnedFood.Instantiate() as Node3D;
+	}
 }

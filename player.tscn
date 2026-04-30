@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://cj8il8880trii"]
 
 [ext_resource type="Script" uid="uid://ql6mfb5wkvk0" path="res://Player.cs" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://c0e31ao8yfox" path="res://Blender Meshes/GingerCat.glb" id="3_hqtel"]
+[ext_resource type="PackedScene" uid="uid://cewyj24qgf2oq" path="res://Blender Meshes/GingerCat2.glb" id="3_i3pqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+material = SubResource("StandardMaterial3D_onrkg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
@@ -14,6 +19,7 @@ height = 0.2
 script = ExtResource("1_4flbx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1662531483]
+visible = false
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=577144523]
@@ -23,4 +29,16 @@ shape = SubResource("CapsuleShape3D_4flbx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot" unique_id=2133266898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628, -0.435)
+visible = false
 mesh = SubResource("SphereMesh_4flbx")
+
+[node name="GingerCat" parent="Pivot" unique_id=458067328 instance=ExtResource("3_hqtel")]
+transform = Transform3D(-90, 0, -7.86805e-06, 0, 90, 0, 7.86805e-06, 0, -90, 0, -0.495, 0)
+visible = false
+
+[node name="GingerCat2" parent="Pivot" unique_id=1715906392 instance=ExtResource("3_i3pqv")]
+transform = Transform3D(-90, 0, -7.86805e-06, 0, 90, 0, 7.86805e-06, 0, -90, 0, -0.68, 0)
+visible = false
+
+[node name="GingerCat3" parent="Pivot" unique_id=1969912712 instance=ExtResource("3_i3pqv")]
+transform = Transform3D(-90, 0, -7.86805e-06, 0, 90, 0, 7.86805e-06, 0, -90, 0, -0.68, 0)

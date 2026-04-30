@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cnvxivw2nru0r"]
+
+[ext_resource type="Script" uid="uid://34kdh1ttlehe" path="res://SpawningTable.cs" id="1_hqd6x"]
+[ext_resource type="PackedScene" uid="uid://c6yvovaitqvqm" path="res://Blender Meshes/Ingredients_Box_Cheese.blend" id="2_hqd6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1emcc"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.3372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ohpd"]
+material = SubResource("StandardMaterial3D_1emcc")
+size = Vector3(1.1, 0.6, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnxcv"]
+
+[node name="SpawningTable" type="StaticBody3D" unique_id=497865140]
+script = ExtResource("1_hqd6x")
+
+[node name="Highlight" type="MeshInstance3D" parent="." unique_id=410719409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+visible = false
+mesh = SubResource("BoxMesh_3ohpd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1757209717]
+shape = SubResource("BoxShape3D_gnxcv")
+
+[node name="Item" type="Node3D" parent="." unique_id=1760121191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Ingredients_Box_Cheese" parent="." unique_id=1565238025 instance=ExtResource("2_hqd6x")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0.21)

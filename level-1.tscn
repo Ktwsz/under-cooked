@@ -3,18 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://cj8il8880trii" path="res://player.tscn" id="1_18dhb"]
 [ext_resource type="PackedScene" uid="uid://pqk1nec6r18k" path="res://Blender Meshes/Tile_Floor.blend" id="1_oqo4x"]
 [ext_resource type="PackedScene" uid="uid://b6abxplrk5w03" path="res://table.tscn" id="2_oqo4x"]
-[ext_resource type="PackedScene" uid="uid://j3t43a68i4pv" path="res://tomato.tscn" id="3_ef43t"]
-[ext_resource type="PackedScene" uid="uid://di11gcsngqg8d" path="res://uncooked_meat.tscn" id="4_mgwar"]
 [ext_resource type="PackedScene" uid="uid://8n60iobmqo26" path="res://frying_pan.tscn" id="5_ly67t"]
 [ext_resource type="PackedScene" uid="uid://clmuyc0jjvrh0" path="res://cutting_table.tscn" id="6_enfoe"]
 [ext_resource type="PackedScene" uid="uid://do6nuh6xu4mp8" path="res://spawning_table.tscn" id="7_jm646"]
 [ext_resource type="PackedScene" uid="uid://bp1xam4fqrmn1" path="res://bun.tscn" id="8_5r5s6"]
-[ext_resource type="PackedScene" uid="uid://wkx8jbe18pc" path="res://cabbage.tscn" id="9_84xxx"]
 [ext_resource type="PackedScene" uid="uid://7h5jbikmy1d4" path="res://trash.tscn" id="10_hmv0i"]
 [ext_resource type="PackedScene" uid="uid://cwvi3fgrdvq3q" path="res://frying_table.tscn" id="11_p752e"]
 [ext_resource type="PackedScene" uid="uid://cr5f0r045pv5p" path="res://plate.tscn" id="12_w4unl"]
+[ext_resource type="Script" uid="uid://34kdh1ttlehe" path="res://SpawningTable.cs" id="13_enfoe"]
 [ext_resource type="PackedScene" uid="uid://cr4g6cdg2hy1b" path="res://Blender Meshes/Wall.blend" id="14_ef43t"]
 [ext_resource type="PackedScene" uid="uid://deia2bq6l0qyk" path="res://table_deliver.tscn" id="14_mgwar"]
+[ext_resource type="PackedScene" uid="uid://hwn1b3r7gpe6" path="res://spawning_table_salad.tscn" id="15_5r5s6"]
+[ext_resource type="PackedScene" uid="uid://bwmu7mfr8h11b" path="res://spawning_table_steak.tscn" id="15_enfoe"]
+[ext_resource type="PackedScene" uid="uid://c165ggpx5dqu4" path="res://spawning_table_tomato.tscn" id="15_jm646"]
 [ext_resource type="PackedScene" uid="uid://b2164e2o235sj" path="res://LevelUI/level_ui.tscn" id="17_enfoe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
@@ -47,7 +48,7 @@ transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -1, 1.2, 8.03)
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 6, 1.2, 8)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=838374962]
-transform = Transform3D(-0.8623724, 0.48737243, 0.13704702, 0.079459205, -0.1370469, 0.9873724, 0.50000006, 0.8623725, 0.0794593, 0, 19, -12)
+transform = Transform3D(-0.8623724, 0.48737243, 0.13704702, 0.079459205, -0.1370469, 0.9873724, 0.50000006, 0.8623725, 0.0794593, 2, 19, 8)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=281990778 instance=ExtResource("1_18dhb")]
@@ -155,21 +156,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 11)
 [node name="CuttingTable" parent="Tables" unique_id=1099469936 instance=ExtResource("6_enfoe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.7, 11)
 
-[node name="SpawningTableTomato2" parent="Tables" unique_id=497865140 instance=ExtResource("7_jm646")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 5)
-SpawnedFood = ExtResource("3_ef43t")
-
-[node name="SpawningTableMeat" parent="Tables" unique_id=1513040115 instance=ExtResource("7_jm646")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 6)
-SpawnedFood = ExtResource("4_mgwar")
-
 [node name="SpawningTableBun" parent="Tables" unique_id=1051198055 instance=ExtResource("7_jm646")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 7)
 SpawnedFood = ExtResource("8_5r5s6")
-
-[node name="SpawningTableCabbage" parent="Tables" unique_id=1126089362 instance=ExtResource("7_jm646")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 8)
-SpawnedFood = ExtResource("9_84xxx")
 
 [node name="Trash" parent="Tables" unique_id=1160235291 instance=ExtResource("10_hmv0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.7, 10)
@@ -195,6 +184,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.7, 11)
 
 [node name="Table11" parent="Tables" unique_id=568256525 instance=ExtResource("2_oqo4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.7, 11)
+script = ExtResource("13_enfoe")
+SpawnedFood = null
 
 [node name="Table12" parent="Tables" unique_id=177408200 instance=ExtResource("2_oqo4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.7, 11)
@@ -214,6 +205,15 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 
 
 [node name="DeliverTable" parent="Tables" unique_id=649131154 instance=ExtResource("14_mgwar")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0.7, 7.5)
+
+[node name="SpawningTableTomato2" parent="Tables" unique_id=2137764656 instance=ExtResource("15_jm646")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 5)
+
+[node name="SpawningTableMeat" parent="Tables" unique_id=497865140 instance=ExtResource("15_enfoe")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 6)
+
+[node name="SpawningTableCabbage" parent="Tables" unique_id=689037671 instance=ExtResource("15_5r5s6")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.7, 8)
 
 [node name="Wall2" parent="." unique_id=1178100359 instance=ExtResource("14_ef43t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6946716, 0, -2.6)
