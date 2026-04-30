@@ -6,6 +6,10 @@ using Godot;
 public partial class Plate : Node3D
 {
     private Bun _bun;
+    public Bun Bun
+    {
+        get => _bun;
+    }
 
     private float _currentPos;
 
@@ -92,11 +96,7 @@ public partial class Plate : Node3D
         if (_bun != null)
         {
             GetNode<TextureRect>("Indicator/SubViewport/HBoxContainer/BunRect").SetVisible(true);
-            children = _bun.GetChildren()
-                .Select(c => c.GetName().ToString())
-                .Where(name =>
-                    !name.StartsWith("Bread") && name != "Indicator" && name != "RecipeIndicator"
-                ); // TODO: add node "Items" for Bun
+            children = _bun.GetContentsNames();
         }
         else
         {

@@ -16,12 +16,10 @@ func _init(
 
 
 func create_order(
-	id: String,
 	start_time: float,
 	duration: float
 ) -> Order:
 	return Order.new(
-		id,
 		texture_path,
 		start_time,
 		duration,

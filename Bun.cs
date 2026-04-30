@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
@@ -99,4 +100,11 @@ public partial class Bun : Node3D
     {
         GetNode<Sprite3D>("RecipeIndicator").SetVisible(false);
     }
+
+    public IEnumerable<string> GetContentsNames() =>
+        GetChildren()
+            .Select(c => c.GetName().ToString())
+            .Where(name =>
+                !name.StartsWith("Bread") && name != "Indicator" && name != "RecipeIndicator"
+            );
 }

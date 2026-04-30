@@ -9,6 +9,7 @@ var order_ingredient = preload("res://LevelUI/order_ingredient.tscn")
 
 var order_texture: Resource
 var ingredient_textures: Array[Resource] = []
+var ingredient_names: Array[String] = []
 var start_time: float
 var duration: float = 0
 var is_started: bool = false
@@ -41,6 +42,7 @@ func setup(data) -> void:
 	
 	for ingredient in data.ingredients:
 		ingredient_textures.append(load(ingredient.texture_path))
+		ingredient_names.append(ingredient.texture_path.get_file().get_basename())
 
 
 func show_order() -> void:
