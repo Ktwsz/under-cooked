@@ -2,6 +2,9 @@ extends CanvasLayer
 
 @onready var pause_menu = $PauseMenu
 @onready var timer = $Timer
+@onready var scoreLabel = $Score/Score
+
+var score = 0
 
 var game_time = preload("res://LevelUI/game_time.tscn")
 const GameTime = preload("res://LevelUI/game_time.gd")
@@ -20,6 +23,9 @@ func _input(event) -> void:
 		else:
 			pause_menu.pause_game()
 
+func increase_score(value: int) -> void:
+	score += value
+	scoreLabel.text = str(score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +39,6 @@ func _ready() -> void:
 	var orders_instance: Orders = orders.instantiate()
 	orders_instance.set_timer(timer, INITIAL_TIME)
 	add_child(orders_instance)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

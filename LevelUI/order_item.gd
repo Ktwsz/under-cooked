@@ -34,6 +34,8 @@ func _process(_delta: float) -> void:
 func get_progress_value() -> float:
 	return 100 * timer.time_left / duration
 
+func get_score() -> int:
+	return 10 * len(ingredient_names)
 
 func setup(data) -> void:
 	order_texture = load(data.texture_path)

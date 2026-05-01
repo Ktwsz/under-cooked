@@ -23,9 +23,10 @@ public partial class TableDeliver : Table
 		foreach (var child in GetNode<Node3D>("Item").GetChildren())
 			child.QueueFree();
 
-		orders[orderIx].Set("is_completed", true);
+		GetNode<CanvasLayer>("../../LevelUI")
+			.Call("increase_score", orders[orderIx].Call("get_score"));
 
-		// TODO: increase score
+		orders[orderIx].Set("is_completed", true);
 	}
 
 	private int OrderExists(Plate plate, Godot.Collections.Array<PanelContainer> orders)
