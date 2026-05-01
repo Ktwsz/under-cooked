@@ -17,6 +17,24 @@ size = Vector3(1.1, 0.6, 1.1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_6ojdj"]
 viewport_path = NodePath("CuttingProgressBar/ProgressBarViewport")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_744ee"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ai8e2"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0, 0.78431374, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="CuttingTable" type="StaticBody3D" unique_id=560797329]
 script = ExtResource("1_6ojdj")
 
@@ -53,4 +71,7 @@ size = Vector2i(192, 27)
 [node name="ProgressBar" type="ProgressBar" parent="CuttingProgressBar/ProgressBarViewport" unique_id=1766610383]
 offset_right = 192.0
 offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_744ee")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ai8e2")
 value = 50.0
+show_percentage = false
