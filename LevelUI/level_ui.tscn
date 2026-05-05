@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cjetxogd63ovv" path="res://LevelUI/level_ui.gd" id="1_0ufh4"]
 [ext_resource type="PackedScene" uid="uid://cvwhgoex66lbt" path="res://LevelUI/score.tscn" id="3_8oqep"]
 [ext_resource type="PackedScene" uid="uid://6de84kvbfh45" path="res://LevelUI/pause_menu.tscn" id="4_bniio"]
+[ext_resource type="PackedScene" uid="uid://02nhvxwnmf0a" path="res://LevelUI/game-over.tscn" id="4_po8xf"]
 
 [node name="LevelUI" type="CanvasLayer" unique_id=303331810]
 script = ExtResource("1_0ufh4")
@@ -18,5 +19,10 @@ grow_vertical = 0
 [node name="PauseMenu" parent="." unique_id=941859224 instance=ExtResource("4_bniio")]
 visible = false
 
+[node name="GameOver" parent="." unique_id=1705465808 instance=ExtResource("4_po8xf")]
+visible = false
+
 [node name="Timer" type="Timer" parent="." unique_id=1572817077]
 one_shot = true
+
+[connection signal="timeout" from="Timer" to="GameOver" method="_on_timer_timeout"]
