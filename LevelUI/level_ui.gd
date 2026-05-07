@@ -2,7 +2,8 @@ extends CanvasLayer
 
 @onready var pause_menu = $PauseMenu
 @onready var timer = $Timer
-@onready var scoreLabel = $Score/Score
+@onready var score_label = $Score/Score
+@onready var game_over_score_label = $GameOver/PanelContainer/MarginContainer/VBoxContainer/ScoreLabel
 
 var score = 0
 
@@ -25,7 +26,8 @@ func _input(event) -> void:
 
 func increase_score(value: int) -> void:
 	score += value
-	scoreLabel.text = str(score)
+	score_label.text = str(score)
+	game_over_score_label.text = "Score: %d" % score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
