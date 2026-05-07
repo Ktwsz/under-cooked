@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ql6mfb5wkvk0" path="res://Player.cs" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c0e31ao8yfox" path="res://Blender Meshes/GingerCat.glb" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://cewyj24qgf2oq" path="res://Blender Meshes/GingerCat2.glb" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://umbnbk4kw21a" path="res://Blender Meshes/overcooked_-_pug_character.glb" id="4_hqtel"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
 
@@ -42,3 +43,7 @@ visible = false
 
 [node name="GingerCat3" parent="Pivot" unique_id=1969912712 instance=ExtResource("3_i3pqv")]
 transform = Transform3D(-90, 0, -7.86805e-06, 0, 90, 0, 7.86805e-06, 0, -90, 0, -0.68, 0)
+visible = false
+
+[node name="Sketchfab_Scene" parent="Pivot" unique_id=646376341 instance=ExtResource("4_hqtel")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9, 0)
