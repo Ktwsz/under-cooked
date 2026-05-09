@@ -162,7 +162,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 
 SpawnedFood = ExtResource("8_5r5s6")
 
 [node name="Trash" parent="Tables" unique_id=1160235291 instance=ExtResource("10_hmv0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.7, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.8, 10)
 
 [node name="FryingTable4" parent="Tables" unique_id=529205047 instance=ExtResource("11_p752e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.7, 4)
