@@ -19,28 +19,35 @@ var levels = [
 	{
 		"id": "level_2",
 		"name": "Level 2",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-2.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	},
 	{
 		"id": "level_3",
 		"name": "Level 3",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-3.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	},
 	{
 		"id": "level_4",
 		"name": "Level 4",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-4.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	},
 	{
 		"id": "level_5",
 		"name": "Level 5",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-5.tscn",
+		"texture_path": "res://icon.svg",
+		"high_score": 800
+	},
+	{
+		"id": "level_6",
+		"name": "Level 6",
+		"scene_path": "res://level-6.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	}
@@ -66,7 +73,7 @@ func _on_continue_button_gui_input(_event: InputEvent) -> void:
 
 func _on_new_game_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		new_game_button.get_tree().change_scene_to_file("res://level.tscn")
+		new_game_button.get_tree().change_scene_to_file("res://level-1.tscn")
 
 
 func _on_options_gui_input(_event: InputEvent) -> void:
