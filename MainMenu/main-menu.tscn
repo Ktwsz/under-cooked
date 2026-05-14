@@ -5,6 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://rhbd3l1bm86u" path="res://MainMenu/MainMenuText.tres" id="3_71wc8"]
 [ext_resource type="Script" uid="uid://dwqumatf5007u" path="res://MainMenu/main_menu.gd" id="4_83wy4"]
 [ext_resource type="FontFile" uid="uid://dyaej2iboqul2" path="res://KitchenChaos/Assets/Fonts/Nunito-Bold.ttf" id="5_h3nvj"]
+[ext_resource type="StyleBox" uid="uid://btmqlvtsp5ke5" path="res://LevelUI/UI-button.tres" id="6_ix784"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_52n7k"]
 line_spacing = -5.0
@@ -12,6 +13,17 @@ font = ExtResource("5_h3nvj")
 font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix784"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.92941177, 0.34509805, 0.08235294, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Background" type="TextureRect" unique_id=1754711728]
 anchors_preset = 15
@@ -42,18 +54,18 @@ theme_override_constants/margin_bottom = 75
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1604160930]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=786870068]
+[node name="LeftContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=786870068]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1691950904]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftContainer" unique_id=1691950904]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 0
 
-[node name="GameLogo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1326196629]
+[node name="GameLogo" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftContainer/MarginContainer" unique_id=1326196629]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -62,48 +74,84 @@ texture = ExtResource("2_s1x6u")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=918755572]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftContainer" unique_id=918755572]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ContinueButton" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=166060415]
+[node name="ContinueButton" type="Label" parent="MarginContainer/HBoxContainer/LeftContainer/VBoxContainer" unique_id=547974063]
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 1
 text = "Continue"
 label_settings = ExtResource("3_71wc8")
 
-[node name="NewGameButton" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=144283339]
+[node name="NewGameButton" type="Label" parent="MarginContainer/HBoxContainer/LeftContainer/VBoxContainer" unique_id=144283339]
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 1
 text = "New Game"
 label_settings = ExtResource("3_71wc8")
 
-[node name="OptionsButton" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1813518695]
+[node name="ExitButton" type="Label" parent="MarginContainer/HBoxContainer/LeftContainer/VBoxContainer" unique_id=1813518695]
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 1
-text = "Options"
+text = "Exit"
 label_settings = ExtResource("3_71wc8")
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=765037102]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftContainer" unique_id=765037102]
 layout_mode = 2
 text = "v0.1.0 Alpha Female
 Łacia Studios ®"
 label_settings = SubResource("LabelSettings_52n7k")
 
-[node name="LevelGrid" type="GridContainer" parent="MarginContainer/HBoxContainer" unique_id=1583545682]
+[node name="RightContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1734301995]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme_override_constants/h_separation = 30
-theme_override_constants/v_separation = 30
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="LevelGrid" type="GridContainer" parent="MarginContainer/HBoxContainer/RightContainer" unique_id=1583545682]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
 columns = 3
 
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_gui_input"]
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_gui_input"]
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_gui_input"]
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer/RightContainer" unique_id=2138253760]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightContainer" unique_id=655222885]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Player1Button" type="Button" parent="MarginContainer/HBoxContainer/RightContainer/HBoxContainer" unique_id=1957737336]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_h3nvj")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("6_ix784")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ix784")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ix784")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ix784")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ix784")
+text = "1 Player"
+
+[node name="Player2Button" type="Button" parent="MarginContainer/HBoxContainer/RightContainer/HBoxContainer" unique_id=1200138917]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_h3nvj")
+theme_override_font_sizes/font_size = 40
+text = "2 Players"
+
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/LeftContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/LeftContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/LeftContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_gui_input"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightContainer/HBoxContainer/Player1Button" to="." method="_on_player_1_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightContainer/HBoxContainer/Player2Button" to="." method="_on_players_2_button_pressed"]

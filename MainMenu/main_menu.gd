@@ -1,12 +1,13 @@
 extends Node
 
-@onready var continue_button = $MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/ContinueButton
-@onready var new_game_button = $MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/NewGameButton
-@onready var options_button = $MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/OptionsButton
-@onready var level_grid = $MarginContainer/HBoxContainer/LevelGrid
+@onready var level_grid = $MarginContainer/HBoxContainer/RightContainer/LevelGrid
+@onready var player_1_button = $MarginContainer/HBoxContainer/RightContainer/HBoxContainer/Player1Button
+@onready var player_2_button = $MarginContainer/HBoxContainer/RightContainer/HBoxContainer/Player2Button
 
-var main_menu_level_item = preload("res://MainMenu/main-menu-level-item.tscn")
+const main_menu_level_item = preload("res://MainMenu/main-menu-level-item.tscn")
 const MainMenuLevelItem = preload("res://MainMenu/main_menu_level_item.gd")
+
+const ui_button_style: StyleBox = preload("res://LevelUI/UI-button.tres")
 
 var levels = [
 	{
@@ -19,33 +20,43 @@ var levels = [
 	{
 		"id": "level_2",
 		"name": "Level 2",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-2.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	},
 	{
 		"id": "level_3",
 		"name": "Level 3",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-3.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	},
 	{
 		"id": "level_4",
 		"name": "Level 4",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-4.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	},
 	{
 		"id": "level_5",
 		"name": "Level 5",
-		"scene_path": "res://level.tscn",
+		"scene_path": "res://level-5.tscn",
+		"texture_path": "res://icon.svg",
+		"high_score": 800
+	},
+	{
+		"id": "level_6",
+		"name": "Level 6",
+		"scene_path": "res://level-6.tscn",
 		"texture_path": "res://icon.svg",
 		"high_score": 800
 	}
 ]
 
+var theme_overrides = ["normal", "pressed", "hover", "disabled", "focus"]
+
+var player_count: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,14 +71,38 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_continue_button_gui_input(_event: InputEvent) -> void:
-	pass # Replace with function body.
+func _on_continue_button_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		pass
 
 
 func _on_new_game_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		new_game_button.get_tree().change_scene_to_file("res://level.tscn")
+		get_tree().change_scene_to_file("res://level-1.tscn")
 
 
-func _on_options_gui_input(_event: InputEvent) -> void:
-	pass # Replace with function body.
+func _on_exit_button_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		get_tree().quit()
+
+
+func add_styles_to_button(button: Button):
+	for style in theme_overrides:
+		button.add_theme_stylebox_override(style, ui_button_style)
+
+
+func remove_styles_to_button(button: Button):
+	for style in theme_overrides:
+		button.remove_theme_stylebox_override(style)
+
+
+func _on_player_1_button_pressed() -> void:
+	player_count = 1
+	add_styles_to_button(player_1_button)
+	remove_styles_to_button(player_2_button)
+
+
+func _on_players_2_button_pressed() -> void:
+	player_count = 2
+	add_styles_to_button(player_2_button)
+	remove_styles_to_button(player_1_button)
