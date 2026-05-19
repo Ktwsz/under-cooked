@@ -60,6 +60,11 @@ shadow_enabled = true
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 4.5, 1, 6.5)
 Speed = 9
 
+[node name="Player2" parent="." unique_id=632276827 instance=ExtResource("2_ny7lk")]
+transform = Transform3D(0.80999994, 0, 0, 0, 0.80999994, 0, 0, 0, 0.80999994, 2.1789675, 1, 6.456812)
+Speed = 9
+PlayerID = 2
+
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=1769382657]
 transform = Transform3D(1, 0, 0, 0, 0.4999999, 0.8660253, 0, -0.8660253, 0.4999999, 2, 7, 7)
 

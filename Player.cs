@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
@@ -6,6 +7,24 @@ public partial class Player : CharacterBody3D
 {
 	[Export]
 	public int Speed { get; set; } = 14;
+
+	[Export]
+	public int PlayerID = 1;
+
+	private Dictionary<string, string> _actions;
+
+	public override void _Ready()
+	{
+		_actions = new Dictionary<string, string>
+		{
+			{ "move_right", $"move_right{PlayerID}" },
+			{ "move_left", $"move_left{PlayerID}" },
+			{ "move_back", $"move_back{PlayerID}" },
+			{ "move_forward", $"move_forward{PlayerID}" },
+			{ "pickup", $"pickup{PlayerID}" },
+			{ "interact", $"interact{PlayerID}" },
+		};
+	}
 
 	private Vector3 _targetVelocity = Vector3.Zero;
 	private Table _lastHighlightedTable = null;
@@ -28,16 +47,16 @@ public partial class Player : CharacterBody3D
 
 		var direction = Vector3.Zero;
 
-		if (Input.IsActionPressed("move_right"))
+		if (Input.IsActionPressed(_actions["move_right"]))
 			direction.X += 1.0f;
 
-		if (Input.IsActionPressed("move_left"))
+		if (Input.IsActionPressed(_actions["move_left"]))
 			direction.X -= 1.0f;
 
-		if (Input.IsActionPressed("move_back"))
+		if (Input.IsActionPressed(_actions["move_back"]))
 			direction.Z += 1.0f;
 
-		if (Input.IsActionPressed("move_forward"))
+		if (Input.IsActionPressed(_actions["move_forward"]))
 			direction.Z -= 1.0f;
 
 		if (direction != Vector3.Zero)
@@ -132,11 +151,11 @@ public partial class Player : CharacterBody3D
 		{
 			HighlightCurrentTable();
 
-			if (Input.IsActionJustPressed("pickup"))
+			if (Input.IsActionJustPressed(_actions["pickup"]))
 				PickupAction();
 
 			if (
-				Input.IsActionJustPressed("interact")
+				Input.IsActionJustPressed(_actions["interact"])
 				&& _heldItem == null
 				&& _lastHighlightedTable != null
 				&& _lastHighlightedTable is CuttingTable cuttingTable
@@ -149,7 +168,7 @@ public partial class Player : CharacterBody3D
 			}
 		}
 		else if (
-			Input.IsActionJustReleased("interact")
+			Input.IsActionJustReleased(_actions["interact"])
 			&& _lastHighlightedTable != null
 			&& _lastHighlightedTable is CuttingTable cuttingTable
 		)

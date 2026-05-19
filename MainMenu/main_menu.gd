@@ -64,6 +64,8 @@ func _ready():
 		var level_item : MainMenuLevelItem = main_menu_level_item.instantiate()
 		level_grid.add_child(level_item)
 		level_item.setup(level)
+		var event_callback = func(event: InputEvent): _on_level_container_gui_input(event, level_item.scene_file)
+		level_item.gui_input.connect(event_callback)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,10 +77,19 @@ func _on_continue_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		pass
 
+func _on_level_container_gui_input(event: InputEvent, scene_file) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		var scene = load(scene_file).instantiate()
+		if player_count == 1:
+			scene.remove_child(scene.find_child("Player2"))
+		get_tree().change_scene_to_node(scene)
 
 func _on_new_game_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		get_tree().change_scene_to_file("res://level-1.tscn")
+		var scene = load("res://level-1.tscn").instantiate()
+		if player_count == 1:
+			scene.remove_child(scene.find_child("Player2"))
+		get_tree().change_scene_to_node(scene)
 
 
 func _on_exit_button_gui_input(event: InputEvent) -> void:

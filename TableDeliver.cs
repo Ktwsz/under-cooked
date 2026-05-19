@@ -86,6 +86,6 @@ public partial class TableDeliver : Table
 			"MeatPattyCooked" => "CookedMeat",
 			"Cabbage" => "CabbageSliced",
 			"Tomato" => "TomatoSliced",
-			"" => "",
+			_ => "",
 		};
 }

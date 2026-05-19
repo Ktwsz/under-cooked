@@ -21,8 +21,3 @@ func setup(data) -> void:
 	name_label.text = data.name
 	preview.texture = load(data.texture_path)
 	score_label.text = "Best score: %s" % data.high_score
-
-
-func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		get_tree().change_scene_to_file(scene_file)
