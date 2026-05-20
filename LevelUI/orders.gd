@@ -14,22 +14,14 @@ var initial_time: float
 
 var order_variants: Array[OrderVariant] = [
 	OrderVariant.new(
-		"res://icon.svg",
+		"res://LevelUI/Assets/bun_patty.png",
 		[
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png"),
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png"),
 		]
 	),
-	#OrderVariant.new(
-		#"res://icon.svg",
-		#[
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/CheeseBlock.png"),
-		#]
-	#),
 	OrderVariant.new(
-		"res://icon.svg",
+		"res://LevelUI/Assets/bun_patty_tomato_cabbage.png",
 		[
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png"),
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png"),
@@ -37,22 +29,19 @@ var order_variants: Array[OrderVariant] = [
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png"),
 		]
 	),
-	#OrderVariant.new(
-		#"res://icon.svg",
-		#[
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/CheeseBlock.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Cabbage.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png"),
-		#]
-	#),
 	OrderVariant.new(
-		"res://icon.svg",
+		"res://LevelUI/Assets/bun_tomato_cabbage.png",
 		[
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png"),
-			#OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/CheeseBlock.png"),
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Cabbage.png"),
+			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png"),
+		]
+	),
+	OrderVariant.new(
+		"res://LevelUI/Assets/bun_patty_tomato.png",
+		[
+			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Bread.png"),
+			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/MeatPattyCooked.png"),
 			OrderIngredientType.new("res://KitchenChaos/Assets/_Assets/Textures/Icons/Tomato.png"),
 		]
 	),
