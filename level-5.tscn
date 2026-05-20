@@ -16,9 +16,69 @@
 [ext_resource type="PackedScene" uid="uid://hwn1b3r7gpe6" path="res://spawning_table_salad.tscn" id="13_dxoqs"]
 [ext_resource type="PackedScene" uid="uid://cr4g6cdg2hy1b" path="res://Blender Meshes/Wall.blend" id="14_8qo27"]
 [ext_resource type="PackedScene" uid="uid://b2164e2o235sj" path="res://LevelUI/level_ui.tscn" id="15_5p7fe"]
+[ext_resource type="PackedScene" uid="uid://dhciuvrbtp4iu" path="res://Blender Meshes/Tree.blend" id="17_xhq0k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 size = Vector3(60, 2, 60)
+
+[sub_resource type="Shader" id="Shader_ten1e"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.6.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7veuj"]
+render_priority = 0
+shader = SubResource("Shader_ten1e")
+shader_parameter/albedo = Color(0.017664118, 0.25656185, 4.813075e-08, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6hdu"]
 albedo_color = Color(0.3403393, 0.34033933, 0.3403393, 1)
@@ -36,8 +96,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_5xgho")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1947858169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04749298, 0.2044487, 0.27135396)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04749298, 0.10362291, 0.27135396)
+material_override = SubResource("ShaderMaterial_7veuj")
 mesh = SubResource("BoxMesh_u52ul")
 
 [node name="Tile_Floor2" parent="Floor" unique_id=889990957 instance=ExtResource("1_da8et")]
@@ -63,7 +123,6 @@ Speed = 9
 [node name="Player2" parent="." unique_id=780401941 instance=ExtResource("2_uo2oc")]
 transform = Transform3D(0.80999994, 0, 0, 0, 0.80999994, 0, 0, 0, 0.80999994, 1.0041294, 1, 6.961939)
 Speed = 9
-PlayerID = 2
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=1769382657]
 transform = Transform3D(1, 0, 0, 0, 0.4999999, 0.8660253, 0, -0.8660253, 0.4999999, 2.7284598, 7, 7)
@@ -252,3 +311,27 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.6
 visible = false
 
 [node name="LevelUI" parent="." unique_id=303331810 instance=ExtResource("15_5p7fe")]
+
+[node name="Tree" parent="." unique_id=717054245 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14.017128, 0.08937991, 6.657219)
+
+[node name="Tree2" parent="." unique_id=301940526 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 13.305771, 0.08937991, 0.91480446)
+
+[node name="Tree3" parent="." unique_id=1573999548 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.795792, 0.08937991, 12.043359)
+
+[node name="Tree4" parent="." unique_id=1115639443 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.261631, 0.08937991, 6.657219)
+
+[node name="Tree5" parent="." unique_id=1543646539 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.440357, 0.08937991, 15.888437)
+
+[node name="Tree6" parent="." unique_id=1641420195 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.698929, 0.08937991, -3.4398403)
+
+[node name="Tree7" parent="." unique_id=2029770622 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.3544493, 0.08937991, -3.6247969)
+
+[node name="Tree8" parent="." unique_id=1043352127 instance=ExtResource("17_xhq0k")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5308695, 0.08937991, 15.573762)
