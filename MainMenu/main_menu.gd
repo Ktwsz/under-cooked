@@ -11,52 +11,41 @@ const ui_button_style: StyleBox = preload("res://LevelUI/UI-button.tres")
 
 var levels = [
 	{
-		"id": "level_1",
 		"name": "Level 1",
 		"scene_path": "res://level-1.tscn",
 		"texture_path": "res://MainMenu/Assets/level_1.png",
-		"high_score": 1200
 	},
 	{
-		"id": "level_2",
 		"name": "Level 2",
 		"scene_path": "res://level-2.tscn",
 		"texture_path": "res://MainMenu/Assets/level_2.png",
-		"high_score": 800
 	},
 	{
-		"id": "level_3",
 		"name": "Level 3",
 		"scene_path": "res://level-3.tscn",
 		"texture_path": "res://MainMenu/Assets/level_3.png",
-		"high_score": 800
 	},
 	{
-		"id": "level_4",
 		"name": "Level 4",
 		"scene_path": "res://level-4.tscn",
 		"texture_path": "res://MainMenu/Assets/level_4.png",
-		"high_score": 800
 	},
 	{
-		"id": "level_5",
 		"name": "Level 5",
 		"scene_path": "res://level-5.tscn",
 		"texture_path": "res://MainMenu/Assets/level_5.png",
-		"high_score": 800
 	},
 	{
-		"id": "level_6",
 		"name": "Level 6",
 		"scene_path": "res://level-6.tscn",
 		"texture_path": "res://MainMenu/Assets/level_6.png",
-		"high_score": 800
 	}
 ]
 
 var theme_overrides = ["normal", "pressed", "hover", "disabled", "focus"]
 
 var player_count: int = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -73,23 +62,33 @@ func _process(_delta: float) -> void:
 	pass
 
 
+func run_level(scene_path: String) -> void:
+	var scene = load(scene_path).instantiate()
+
+	if player_count == 1:
+		scene.remove_child(scene.find_child("Player2"))
+
+	Engine.get_main_loop().change_scene_to_node(scene)
+
+
 func _on_continue_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		pass
+		for level in levels:
+			if UserScores.get_high_score(level["scene_path"]) == 0:
+				run_level(level["scene_path"])
+				return
+
+		run_level(levels[randi() % levels.size()]["scene_path"])
+
 
 func _on_level_container_gui_input(event: InputEvent, scene_file) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		var scene = load(scene_file).instantiate()
-		if player_count == 1:
-			scene.remove_child(scene.find_child("Player2"))
-		get_tree().change_scene_to_node(scene)
+		run_level(scene_file)
+
 
 func _on_new_game_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		var scene = load("res://level-1.tscn").instantiate()
-		if player_count == 1:
-			scene.remove_child(scene.find_child("Player2"))
-		get_tree().change_scene_to_node(scene)
+		run_level(levels[0]["scene_file"])
 
 
 func _on_exit_button_gui_input(event: InputEvent) -> void:
