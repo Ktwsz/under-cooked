@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cvwhgoex66lbt" path="res://LevelUI/score.tscn" id="3_8oqep"]
 [ext_resource type="PackedScene" uid="uid://6de84kvbfh45" path="res://LevelUI/pause_menu.tscn" id="4_bniio"]
 [ext_resource type="PackedScene" uid="uid://bccm432b5yx0u" path="res://LevelUI/game-over.tscn" id="4_po8xf"]
+[ext_resource type="StyleBox" uid="uid://1ixxdg6cq6d6" path="res://LevelUI/UI-element-center.tres" id="5_8oqep"]
+[ext_resource type="Texture2D" uid="uid://de0gbkbeh3bhh" path="res://LevelUI/Assets/keyboard.png" id="6_bniio"]
+[ext_resource type="Script" uid="uid://b8kciblxe4b8s" path="res://LevelUI/controls.gd" id="6_lh4m4"]
 
 [node name="LevelUI" type="CanvasLayer" unique_id=303331810]
 script = ExtResource("1_0ufh4")
@@ -24,5 +27,28 @@ visible = false
 
 [node name="Timer" type="Timer" parent="." unique_id=1572817077]
 one_shot = true
+
+[node name="Controls" type="PanelContainer" parent="." unique_id=334963350]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_8oqep")
+script = ExtResource("6_lh4m4")
+
+[node name="TextureRect" type="TextureRect" parent="Controls" unique_id=1934537685]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+texture = ExtResource("6_bniio")
+expand_mode = 3
+stretch_mode = 5
 
 [connection signal="timeout" from="Timer" to="GameOver" method="_on_timer_timeout"]

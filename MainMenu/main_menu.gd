@@ -1,6 +1,6 @@
 extends Node
 
-@onready var level_grid = $MarginContainer/HBoxContainer/RightContainer/LevelGrid
+@onready var level_grid = $MarginContainer/HBoxContainer/RightContainer/Control/LevelGrid
 @onready var player_1_button = $MarginContainer/HBoxContainer/RightContainer/HBoxContainer/Player1Button
 @onready var player_2_button = $MarginContainer/HBoxContainer/RightContainer/HBoxContainer/Player2Button
 
@@ -14,42 +14,42 @@ var levels = [
 		"id": "level_1",
 		"name": "Level 1",
 		"scene_path": "res://level-1.tscn",
-		"texture_path": "res://icon.svg",
+		"texture_path": "res://MainMenu/Assets/level_1.png",
 		"high_score": 1200
 	},
 	{
 		"id": "level_2",
 		"name": "Level 2",
 		"scene_path": "res://level-2.tscn",
-		"texture_path": "res://icon.svg",
+		"texture_path": "res://MainMenu/Assets/level_2.png",
 		"high_score": 800
 	},
 	{
 		"id": "level_3",
 		"name": "Level 3",
 		"scene_path": "res://level-3.tscn",
-		"texture_path": "res://icon.svg",
+		"texture_path": "res://MainMenu/Assets/level_3.png",
 		"high_score": 800
 	},
 	{
 		"id": "level_4",
 		"name": "Level 4",
 		"scene_path": "res://level-4.tscn",
-		"texture_path": "res://icon.svg",
+		"texture_path": "res://MainMenu/Assets/level_4.png",
 		"high_score": 800
 	},
 	{
 		"id": "level_5",
 		"name": "Level 5",
 		"scene_path": "res://level-5.tscn",
-		"texture_path": "res://icon.svg",
+		"texture_path": "res://MainMenu/Assets/level_5.png",
 		"high_score": 800
 	},
 	{
 		"id": "level_6",
 		"name": "Level 6",
 		"scene_path": "res://level-6.tscn",
-		"texture_path": "res://icon.svg",
+		"texture_path": "res://MainMenu/Assets/level_6.png",
 		"high_score": 800
 	}
 ]
