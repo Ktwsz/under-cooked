@@ -126,6 +126,7 @@ Speed = 9
 [node name="Player2" parent="." unique_id=284744918 instance=ExtResource("2_ten1e")]
 transform = Transform3D(0.80999994, 0, 0, 0, 0.80999994, 0, 0, 0, 0.80999994, 6.928, 1, 5.8546877)
 Speed = 9
+PlayerID = 2
 
 [node name="CameraPivot" type="Marker3D" parent="." unique_id=1769382657]
 transform = Transform3D(1, 0, 0, 0, 0.4999999, 0.8660253, 0, -0.8660253, 0.4999999, 2, 7, 7)
