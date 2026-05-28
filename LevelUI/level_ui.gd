@@ -28,6 +28,7 @@ func increase_score(value: int) -> void:
 	score += value
 	score_label.text = str(score)
 	game_over_score_label.text = "Score: %d" % score
+	UserScores.save_score(get_tree().current_scene.scene_file_path, score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
