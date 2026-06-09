@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjetxogd63ovv" path="res://LevelUI/level_ui.gd" id="1_0ufh4"]
 [ext_resource type="PackedScene" uid="uid://cvwhgoex66lbt" path="res://LevelUI/score.tscn" id="3_8oqep"]
 [ext_resource type="PackedScene" uid="uid://6de84kvbfh45" path="res://LevelUI/pause_menu.tscn" id="4_bniio"]
-[ext_resource type="PackedScene" uid="uid://bccm432b5yx0u" path="res://LevelUI/game-over.tscn" id="4_po8xf"]
+[ext_resource type="PackedScene" uid="uid://02nhvxwnmf0a" path="res://LevelUI/game-over.tscn" id="4_po8xf"]
 [ext_resource type="StyleBox" uid="uid://1ixxdg6cq6d6" path="res://LevelUI/UI-element-center.tres" id="5_8oqep"]
 [ext_resource type="Texture2D" uid="uid://de0gbkbeh3bhh" path="res://LevelUI/Assets/keyboard.png" id="6_bniio"]
 [ext_resource type="Script" uid="uid://b8kciblxe4b8s" path="res://LevelUI/controls.gd" id="6_lh4m4"]
